@@ -1,4 +1,5 @@
 # react-redux-realestate
+ ![Build Status](https://travis-ci.org/aquilesb/react-redux-realestate.svg?branch=master)
 
 ## Description
 
