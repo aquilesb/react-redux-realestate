@@ -1,0 +1,31 @@
+body {
+  .modal-overlay {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      background-color: rgba(0, 0, 0, .8);
+      z-index: 2;
+  }
+  .login-modal{
+    width: 500px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    .sign-in-form{
+      width: 45%;
+      margin-right: auto;
+    }
+    .sign-up{
+      width: 45%;
+      margin-left: auto;
+      .btn-info{
+        margin-top:20px;
+      }
+    }
+  }
+}

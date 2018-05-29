@@ -1,0 +1,44 @@
+.home{
+  .listing-detail {
+    margin-bottom: 30px;
+    span {
+      color: #fff;
+      width: 25px;
+      height: 25px;
+      background-color: #555;
+      display: inline-block;
+      border-radius: 25px;
+      text-align: center;
+      line-height: 26px;
+      font-size: 14px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      &:hover {
+        background: #72b70f;
+      }
+      &:last-child{
+        margin-right: 0px;
+      }
+    }
+  }
+  
+  .form-control {
+    &.buy {
+      min-width: 75px;
+    }
+    &.property {
+      min-width: 110px;
+    }
+  }
+
+  .btn-find-now {
+    display: flex;
+    justify-content: center;
+  }
+
+  .recommended{
+    .slider-control-centerright, .slider-control-centerleft{
+      display: none;
+    }
+  }
+}

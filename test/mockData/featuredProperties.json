@@ -1,0 +1,221 @@
+[{
+        "id": 1,
+        "encodedUrl": "Brunswick+Victoria+street+vic+3056",
+        "name": "Luxury home",
+        "price": 234900,
+        "features": {
+            "bedroom": 3,
+            "bathroom": 2,
+            "parking": 1,
+            "kitchen": 1
+        },
+        "images": [
+            "/static/images/3.jpg",
+            "/static/images/3.jpg",
+            "/static/images/3.jpg",
+            "/static/images/3.jpg",
+            "/static/images/3.jpg"
+        ],
+        "status": "sold",
+        "address": "Brunswick,Victoria Street , 3056, Victoria, Australia",
+        "googleMapsAddress": "Brunswick,+Victoria+Street,+3056,+Victoria,+Australia",
+        "agent": {
+            "name": "John Parker",
+            "phone": "009 229 2929"
+        },
+        "detail": "<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time chemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p><br /><br /> <p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service</p>"
+    },
+    {
+        "id": 2,
+        "encodedUrl": "Brunswick+Victoria+street+vic+3056",
+        "name": "Luxury home",
+        "price": 234900,
+        "features": {
+            "bedroom": 3,
+            "bathroom": 2,
+            "parking": 1,
+            "kitchen": 1
+        },
+        "images": [
+            "/static/images/3.jpg",
+            "/static/images/3.jpg",
+            "/static/images/3.jpg",
+            "/static/images/3.jpg",
+            "/static/images/3.jpg"
+        ],
+        "status": "new",
+        "address": "Brunswick,Victoria Street, 3056, Victoria, Australia",
+        "googleMapsAddress": "Brunswick,+Victoria+Street,+3056,+Victoria,+Australia",
+        "agent": {
+            "name": "John Parker",
+            "phone": "009 229 2929"
+        },
+        "detail": "<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time chemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p><br /><br /> <p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service</p>"
+    },
+    {
+        "id": 3,
+        "encodedUrl": "Brunswick+Victoria+street+vic+3056",
+        "name": "Luxury home",
+        "price": 234900,
+        "features": {
+            "bedroom": 3,
+            "bathroom": 2,
+            "parking": 1,
+            "kitchen": 1
+        },
+        "images": [
+            "/static/images/3.jpg",
+            "/static/images/3.jpg",
+            "/static/images/3.jpg",
+            "/static/images/3.jpg",
+            "/static/images/3.jpg"
+        ],
+        "status": "new",
+        "address": "Brunswick,Victoria Street , 3056, Victoria, Australia",
+        "agent": {
+            "name": "John Parker",
+            "phone": "009 229 2929"
+        },
+        "detail": "<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time chemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p><br /><br /> <p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service</p>"
+    },
+    {
+        "id": 4,
+        "encodedUrl": "Brunswick+Victoria+street+vic+3056",
+        "name": "Luxury home",
+        "price": 234900,
+        "features": {
+            "bedroom": 3,
+            "bathroom": 2,
+            "parking": 1,
+            "kitchen": 1
+        },
+        "images": ["/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg"],
+        "status": "sell",
+        "address": "Brunswick,Victoria Street , 3056, Victoria, Australia",
+        "agent": {
+            "name": "John Parker",
+            "phone": "009 229 2929"
+        },
+        "detail": "<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time chemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p><br /><br /> <p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service</p>"
+    },
+    {
+        "id": 5,
+        "encodedUrl": "Brunswick+Victoria+street+vic+3056",
+        "name": "Luxury home",
+        "price": 234900,
+        "features": {
+            "bedroom": 3,
+            "bathroom": 2,
+            "parking": 1,
+            "kitchen": 1
+        },
+        "images": ["/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg"],
+        "status": "sell",
+        "address": "Brunswick,Victoria Street , 3056, Victoria, Australia",
+        "agent": {
+            "name": "John Parker",
+            "phone": "009 229 2929"
+        },
+        "detail": "<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time chemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p><br /><br /> <p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service</p>"
+    },
+    {
+        "id": 6,
+        "encodedUrl": "Brunswick+Victoria+street+vic+3056",
+        "name": "Luxury home",
+        "price": 234900,
+        "features": {
+            "bedroom": 3,
+            "bathroom": 2,
+            "parking": 1,
+            "kitchen": 1
+        },
+        "images": ["/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg"],
+        "status": "sold",
+        "address": "Brunswick,Victoria Street , 3056, Victoria, Australia",
+        "agent": {
+            "name": "John Parker",
+            "phone": "009 229 2929"
+        },
+        "detail": "<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time chemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p><br /><br /> <p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service</p>"
+    },
+    {
+        "id": 7,
+        "encodedUrl": "Brunswick+Victoria+street+vic+3056",
+        "name": "Luxury home",
+        "price": 234900,
+        "features": {
+            "bedroom": 3,
+            "bathroom": 2,
+            "parking": 1,
+            "kitchen": 1
+        },
+        "images": ["/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg"],
+        "status": "new",
+        "address": "Brunswick,Victoria Street , 3056, Victoria, Australia",
+        "agent": {
+            "name": "John Parker",
+            "phone": "009 229 2929"
+        },
+        "detail": "<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time chemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p><br /><br /> <p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service</p>"
+    },
+    {
+        "id": 8,
+        "encodedUrl": "Brunswick+Victoria+street+vic+3056",
+        "name": "Luxury home",
+        "price": 234900,
+        "features": {
+            "bedroom": 3,
+            "bathroom": 2,
+            "parking": 1,
+            "kitchen": 1
+        },
+        "images": ["/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg"],
+        "status": "sell",
+        "address": "Brunswick,Victoria Street , 3056, Victoria, Australia",
+        "agent": {
+            "name": "John Parker",
+            "phone": "009 229 2929"
+        },
+        "detail": "<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time chemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p><br /><br /> <p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service</p>"
+    },
+    {
+        "id": 9,
+        "encodedUrl": "Brunswick+Victoria+street+vic+3056",
+        "name": "Luxury home",
+        "price": 234900,
+        "features": {
+            "bedroom": 3,
+            "bathroom": 2,
+            "parking": 1,
+            "kitchen": 1
+        },
+        "images": ["/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg"],
+        "status": "sell",
+        "address": "Brunswick,Victoria Street , 3056, Victoria, Australia",
+        "agent": {
+            "name": "John Parker",
+            "phone": "009 229 2929"
+        },
+        "detail": "<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time chemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p><br /><br /> <p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service</p>"
+    },
+    {
+        "id": 10,
+        "encodedUrl": "Brunswick+Victoria+street+vic+3056",
+        "name": "Luxury home",
+        "price": 234900,
+        "features": {
+            "bedroom": 3,
+            "bathroom": 2,
+            "parking": 1,
+            "kitchen": 1
+        },
+        "images": ["/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg", "/static/images/3.jpg"],
+        "status": "sold",
+        "address": "Brunswick,Victoria Street , 3056, Victoria, Australia",
+        "agent": {
+            "name": "John Parker",
+            "phone": "009 229 2929"
+        },
+        "detail": "<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time chemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p><br /><br /> <p>Completely synergize resource sucking relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service</p>"
+    }
+]

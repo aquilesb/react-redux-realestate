@@ -1,0 +1,18 @@
+{
+    "extends": ["airbnb", "plugin:jest/recommended", "plugin:react/recommended"],
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "globals": {
+        "require": true
+    },
+    "rules": {
+        "react/prefer-stateless-function": "none",
+        "jsx-a11y/anchor-is-valid": ["error", {
+            "components": ["Link"],
+            "specialLink": ["hrefLeft", "hrefRight", "to"],
+            "aspects": ["noHref", "invalidHref", "preferButton"]
+        }]
+    }
+}

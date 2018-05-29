@@ -1,0 +1,23 @@
+.search {
+  .inside-banner {
+    background: url(/images/bginside.jpg) #222;
+    padding: 20px 0;
+    color: #999;
+  }
+  .sortby-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .align-right {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      h6 {
+        min-width: 60px;
+      }
+      select {
+        margin: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+@import "modules/bootstrap";
+@import "modules/style";
+@import "modules/search";
+@import "modules/property";
+@import "modules/about";
+@import "modules/agents";
+@import "modules/blog";
+@import "modules/contact";
+@import "modules/spinner";
+@import "modules/modal";
+@import "modules/home";
+
+body {
+    main {
+        background-color: #eee;
+        #slider {
+            display: none;
+        }
+        .banner-search {
+            display: flex;
+            align-items: flex-end;
+            background: url('~/images/banner-1.jpg') no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            width: 100%;
+            .search-wrapper{
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                padding: 20px;
+                margin-bottom: -10px;
+            }
+        }
+
+        .content-container{
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            background-color: #eee;
+            .properties-listing{
+                .slick-slider{
+                    .slick-list{
+                        .slick-slide{
+                            .properties-wrapper{
+                                padding: 5px;
+                                background: #eee;
+                                .status{
+                                  text-transform:capitalize;
+                                }
+                            }
+                        }
+                    }
+                }
+                .carousel{
+                    display: flex;
+                    .properties{
+                        width: 228px;
+                    }
+                }
+            }
+        }
+    }
+
+    footer{
+        .social-link img{
+            border-radius: 50%;
+            transition: .5s;
+            &:hover{
+                background-color: #acabab;
+            }
+        }
+    }
+}
