@@ -1,6 +1,6 @@
-*.css_ linguist-language=CSS
-*.html_ linguist-language=HTML
-*.js_ linguist-language=JavaScript
-*.json_ linguist-language=JSON
-*.scss_ linguist-language=CSS
-*.svg_ linguist-language=SVG
+*.css linguist-language=CSS
+*.html linguist-language=HTML
+*.js linguist-language=JavaScript
+*.json linguist-language=JSON
+*.scss linguist-language=CSS
+*.svg linguist-language=SVG
