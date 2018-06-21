@@ -59,22 +59,22 @@ describe('SearchContainer', () => {
     fetchMock.restore();
   });
 
-  test('SHOULD load search element', () => {
+  test('should load search element', () => {
     const component = getComponent().find('.search');
     expect(component.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load inside-banner element', () => {
+  test('should load inside-banner element', () => {
     const component = getComponent().find('.inside-banner');
     expect(component.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load SideSearchForm component', () => {
+  test('should load SideSearchForm component', () => {
     const component = getComponent().find('.search-form');
     expect(component.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD SideSearchForm form element dispatch an action WHEN submitted ', () => {
+  test('should SideSearchForm form element dispatch an action when submitted ', () => {
     const component = getComponent(true).find('.search-form');
     const params = state.getIn(['search', 'fields']).set('qnt', state.getIn(['search', 'qntSearch'])).set('index', 0).set('sortBy', state.getIn(['search', 'sortBy']))
       .toJS();
@@ -94,7 +94,7 @@ describe('SearchContainer', () => {
     ]);
   });
 
-  test('SHOULD SideSearchForm type select element dispatch an action WHEN changed ', () => {
+  test('should SideSearchForm type select element dispatch an action when changed ', () => {
     const component = getComponent(true).find('.search-form .type');
     component.simulate('change', { target: { value: '2' } });
     expect(store.getActions()).toEqual([{
@@ -104,7 +104,7 @@ describe('SearchContainer', () => {
     }]);
   });
 
-  test('SHOULD SideSearchForm price select element dispatch an action WHEN changed ', () => {
+  test('should SideSearchForm price select element dispatch an action when changed ', () => {
     const component = getComponent(true).find('.search-form .price');
     component.simulate('change', { target: { value: '100 - 200' } });
     expect(store.getActions()).toEqual([{
@@ -114,7 +114,7 @@ describe('SearchContainer', () => {
     }]);
   });
 
-  test('SHOULD SideSearchForm property select element dispatch an action WHEN changed ', () => {
+  test('should SideSearchForm property select element dispatch an action when changed ', () => {
     const component = getComponent(true).find('.search-form .property');
     component.simulate('change', { target: { value: '1' } });
     expect(store.getActions()).toEqual([{
@@ -124,22 +124,22 @@ describe('SearchContainer', () => {
     }]);
   });
 
-  test('SHOULD load sort-by element', () => {
+  test('should load sort-by element', () => {
     const component = getComponent().find('.sortby-wrapper select');
     expect(component.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load search-result element', () => {
+  test('should load search-result element', () => {
     const component = getComponent().find('.search .search-result');
     expect(component.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load infinite-scroll component', () => {
+  test('should load infinite-scroll component', () => {
     const component = getComponent().find('.search .search-result #infinite-scroll');
     expect(component.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load infinite-scroll itens elements', () => {
+  test('should load infinite-scroll itens elements', () => {
     const component = getComponent().find('.search .search-result #infinite-scroll div');
     expect(component).toHaveLength(61);
   });

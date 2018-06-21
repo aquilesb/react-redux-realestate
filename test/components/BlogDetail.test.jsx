@@ -15,22 +15,22 @@ describe('BlogDetail component', () => {
     return mountedComponent;
   };
 
-  test('SHOULD load getComponent blog element', () => {
+  test('should load getComponent blog element', () => {
     const blog = getComponent().find('.blog');
     expect(blog.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load inside banner', () => {
+  test('should load inside banner', () => {
     const insideBanner = getComponent().find('.inside-banner');
     expect(insideBanner.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load sub-title', () => {
+  test('should load sub-title', () => {
     const subTitle = getComponent().find('.sub-title');
     expect(subTitle.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load thumbnail image', () => {
+  test('should load thumbnail image', () => {
     const thumbnailImg = getComponent().find('img.thumbnail');
     expect(thumbnailImg.length).toBeGreaterThan(0);
   });

@@ -31,64 +31,64 @@ describe('AgentListItem component', () => {
     };
   });
 
-  describe('WHEN showEmail and showPhone are true', () => {
-    test('SHOULD load content', () => {
+  describe('when showEmail and showPhone are true', () => {
+    test('should load content', () => {
       const rowDiv = agentListItem().find('.row');
       expect(rowDiv.length).toBeGreaterThan(0);
     });
 
-    test('SHOULD load name', () => {
+    test('should load name', () => {
       const name = agentListItem().find('.name');
       expect(name.length).toBeGreaterThan(0);
     });
 
-    test('SHOULD load description', () => {
+    test('should load description', () => {
       const description = agentListItem().find('.description');
       expect(description.length).toBeGreaterThan(0);
     });
 
-    test('SHOULD show envelope icon WHEN showEmail props is true', () => {
+    test('should show envelope icon when showEmail props is true', () => {
       const envelope = agentListItem().find('.glyphicon-envelope');
       expect(envelope.length).toBeGreaterThan(0);
     });
 
-    test('SHOULD show link to mail agent WHEN showEmail props is true', () => {
+    test('should show link to mail agent when showEmail props is true', () => {
       const linkMail = agentListItem().find('#mail-2-agent');
       expect(linkMail.length).toBeGreaterThan(0);
     });
 
-    test('SHOULD show earphone icon WHEN showPhone props is true', () => {
+    test('should show earphone icon when showPhone props is true', () => {
       const earphone = agentListItem().find('.glyphicon-earphone');
       expect(earphone.length).toBeGreaterThan(0);
     });
 
-    test('SHOULD show phone agent WHEN showPhone props is true', () => {
+    test('should show phone agent when showPhone props is true', () => {
       const phone = agentListItem().find('.phone');
       expect(phone.length).toBeGreaterThan(0);
     });
   });
 
-  describe('WHEN showEmail and showPhone are false', () => {
+  describe('when showEmail and showPhone are false', () => {
     beforeAll(() => {
       props.agent = props.agent.set('showEmail', false).set('showPhone', false);
     });
 
-    test('SHOULD not show envelope icon WHEN showEmail props is false', () => {
+    test('should not show envelope icon when showEmail props is false', () => {
       const envelope = agentListItem(true).find('.glyphicon-envelope');
       expect(envelope).toHaveLength(0);
     });
 
-    test('SHOULD not show link to mail agent WHEN showEmail props is false', () => {
+    test('should not show link to mail agent when showEmail props is false', () => {
       const linkMail = agentListItem().find('#mail-2-agent');
       expect(linkMail).toHaveLength(0);
     });
 
-    test('SHOULD not show earphone icon WHEN showPhone props is false', () => {
+    test('should not show earphone icon when showPhone props is false', () => {
       const earphone = agentListItem().find('.glyphicon-earphone');
       expect(earphone).toHaveLength(0);
     });
 
-    test('SHOULD not show phone agent WHEN showPhone props is false', () => {
+    test('should not show phone agent when showPhone props is false', () => {
       const phone = agentListItem().find('.phone');
       expect(phone).toHaveLength(0);
     });

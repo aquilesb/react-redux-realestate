@@ -14,27 +14,27 @@ describe('LoginModal', () => {
     return mountedComponent;
   };
 
-  it('SHOULD render LoginModal successfully', () => {
+  it('should render LoginModal successfully', () => {
     const component = getComponent().find('.login-modal');
     expect(component.length).toBeGreaterThan(0);
   });
 
-  it('SHOULD render email element', () => {
+  it('should render email element', () => {
     const component = getComponent().find('.email');
     expect(component.length).toBeGreaterThan(0);
   });
 
-  it('SHOULD render email phone', () => {
+  it('should render email phone', () => {
     const component = getComponent().find('.phone');
     expect(component.length).toBeGreaterThan(0);
   });
 
-  it('SHOULD render email login button', () => {
+  it('should render email login button', () => {
     const component = getComponent().find('.btn-success');
     expect(component.length).toBeGreaterThan(0);
   });
 
-  it('SHOULD render email register button', () => {
+  it('should render email register button', () => {
     const component = getComponent().find('.btn-info');
     expect(component.length).toBeGreaterThan(0);
   });

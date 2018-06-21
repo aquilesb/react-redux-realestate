@@ -15,15 +15,15 @@ describe('About component', () => {
     return mountedAbout;
   };
 
-  test('SHOULD load about image', () => {
+  test('should load about image', () => {
     const thumbnailImg = about().find('img.thumbnail');
     expect(thumbnailImg.length).toBeGreaterThan(0);
   });
-  test('SHOULD load inside banner', () => {
+  test('should load inside banner', () => {
     const insideBanner = about().find('.inside-banner');
     expect(insideBanner.length).toBeGreaterThan(0);
   });
-  test('SHOULD load thumbnail image', () => {
+  test('should load thumbnail image', () => {
     const thumbnailImg = about().find('img.thumbnail');
     expect(thumbnailImg.length).toBeGreaterThan(0);
   });

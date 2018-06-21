@@ -30,17 +30,17 @@ describe('AgentsContainer', () => {
     store = mockStore(state);
   });
 
-  it('SHOULD render successfully providing store', () => {
+  it('should render successfully providing store', () => {
     const component = getComponent().find('main.agents');
     expect(component.length).toBeGreaterThan(0);
   });
 
-  it('SHOULD render inside-banner element', () => {
+  it('should render inside-banner element', () => {
     const component = getComponent().find('.inside-banner');
     expect(component.length).toBeGreaterThan(0);
   });
 
-  it('SHOULD render AgentListItem itens', () => {
+  it('should render AgentListItem itens', () => {
     const itens = getComponent().find('div.spacer .row');
     expect(itens).toHaveLength(12);
   });

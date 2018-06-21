@@ -28,17 +28,17 @@ describe('PropertyHot component', () => {
     };
   });
 
-  test('SHOULD load img-circle element', () => {
+  test('should load img-circle element', () => {
     const imgCircle = getComponent().find('.row div .img-circle');
     expect(imgCircle.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load ĺink-name element', () => {
+  test('should load ĺink-name element', () => {
     const ĺinkName = getComponent().find('.row div h5 .link-name');
     expect(ĺinkName.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load price element', () => {
+  test('should load price element', () => {
     const price = getComponent().find('.row div .price');
     expect(price.length).toBeGreaterThan(0);
   });

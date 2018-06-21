@@ -15,37 +15,37 @@ describe('Footer component', () => {
     return mountedComponent;
   };
 
-  test('SHOULD load footer element', () => {
+  test('should load footer element', () => {
     const footer = getComponent().find('footer');
     expect(footer.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load page links', () => {
+  test('should load page links', () => {
     const pageLinks = getComponent().find('.page-links li a');
     expect(pageLinks).toHaveLength(4);
   });
 
-  test('SHOULD load newsletter wrapper', () => {
+  test('should load newsletter wrapper', () => {
     const newsletterWrapper = getComponent().find('.newsletter-wrapper');
     expect(newsletterWrapper.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load follow-us', () => {
+  test('should load follow-us', () => {
     const followUs = getComponent().find('.follow-us');
     expect(followUs.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load contact us', () => {
+  test('should load contact us', () => {
     const contactUs = getComponent().find('.contact-us');
     expect(contactUs.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load contact us icons', () => {
+  test('should load contact us icons', () => {
     const contactUsIcons = getComponent().find('.contact-us p span.glyphicon');
     expect(contactUsIcons).toHaveLength(3);
   });
 
-  test('SHOULD load copyright', () => {
+  test('should load copyright', () => {
     const copyright = getComponent().find('.copyright');
     expect(copyright.length).toBeGreaterThan(0);
   });

@@ -35,7 +35,7 @@ describe('Propertie actions', () => {
     fetchMock.restore();
   });
 
-  test('SHOULD load featured properties', () => {
+  test('should load featured properties', () => {
     fetchMock.getOnce('/api/properties/featured', featuredProperties);
 
     const expectedActions = [
@@ -49,7 +49,7 @@ describe('Propertie actions', () => {
     });
   });
 
-  test('SHOULD not load featured properties', () => {
+  test('should not load featured properties', () => {
     const error = 'test.body.error.message';
     fetchMock.getOnce('/api/properties/featured', {
       status: 404,
@@ -72,7 +72,7 @@ describe('Propertie actions', () => {
     });
   });
 
-  test('SHOULD load recommended properties', () => {
+  test('should load recommended properties', () => {
     fetchMock.getOnce('/api/properties/recommended', featuredProperties);
 
     const expectedActions = [
@@ -89,7 +89,7 @@ describe('Propertie actions', () => {
     });
   });
 
-  test('SHOULD not load recommended properties', () => {
+  test('should not load recommended properties', () => {
     const error = 'test.body.error.message';
     fetchMock.getOnce('/api/properties/recommended', {
       status: 404,
@@ -113,7 +113,7 @@ describe('Propertie actions', () => {
     });
   });
 
-  test('SHOULD load hot properties', () => {
+  test('should load hot properties', () => {
     fetchMock.getOnce('/api/properties/hot', featuredProperties);
 
     const expectedActions = [
@@ -127,7 +127,7 @@ describe('Propertie actions', () => {
     });
   });
 
-  test('SHOULD not load hot properties', () => {
+  test('should not load hot properties', () => {
     const error = 'test.body.error.message';
     fetchMock.getOnce('/api/properties/hot', {
       status: 404,
@@ -151,7 +151,7 @@ describe('Propertie actions', () => {
     });
   });
 
-  test('SHOULD load the infinite search not from search page', () => {
+  test('should load the infinite search not from search page', () => {
     const params = initialStateSearch.getIn(['search', 'fields']).set('qnt', initialStateSearch.getIn(['search', 'qntSearch'])).set('index', initialStateSearch.getIn(['search', 'timesSearched'])).set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
       .toJS();
     fetchMock.getOnce(`/api/search/?${queryString.stringify(params)}`, { data: featuredProperties, total: 102 });
@@ -189,7 +189,7 @@ describe('Propertie actions', () => {
     });
   });
 
-  test('SHOULD load the infinite search from search page', () => {
+  test('should load the infinite search from search page', () => {
     const params = initialStateSearch.getIn(['search', 'fields']).set('qnt', initialStateSearch.getIn(['search', 'qntSearch'])).set('index', initialStateSearch.getIn(['search', 'timesSearched'])).set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
       .toJS();
     fetchMock.getOnce(`/api/search/?${queryString.stringify(params)}`, { data: featuredProperties, total: 102 });
@@ -215,7 +215,7 @@ describe('Propertie actions', () => {
     });
   });
 
-  test('SHOULD not load the infinite search', () => {
+  test('should not load the infinite search', () => {
     const params = initialStateSearch.getIn(['search', 'fields']).set('qnt', initialStateSearch.getIn(['search', 'qntSearch'])).set('index', initialStateSearch.getIn(['search', 'timesSearched'])).set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
       .toJS();
 
@@ -242,7 +242,7 @@ describe('Propertie actions', () => {
     });
   });
 
-  test('SHOULD search property', () => {
+  test('should search property', () => {
     const params = initialStateSearch.getIn(['search', 'fields']).set('qnt', initialStateSearch.getIn(['search', 'qntSearch'])).set('index', 0).set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
       .toJS();
     fetchMock.getOnce(`/api/search/?${queryString.stringify(params)}`, { data: featuredProperties, total: 102 });
@@ -274,7 +274,7 @@ describe('Propertie actions', () => {
     });
   });
 
-  test('SHOULD not search property', () => {
+  test('should not search property', () => {
     const params = initialStateSearch.getIn(['search', 'fields']).set('qnt', initialStateSearch.getIn(['search', 'qntSearch'])).set('index', 0).set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
       .toJS();
     const error = 'test.body.error.message';

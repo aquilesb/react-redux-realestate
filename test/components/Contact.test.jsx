@@ -15,15 +15,15 @@ describe('Contact component', () => {
     return mountedComponent;
   };
 
-  test('SHOULD load contact element', () => {
+  test('should load contact element', () => {
     const mainContact = getComponent().find('.contact');
     expect(mainContact.length).toBeGreaterThan(0);
   });
-  test('SHOULD load form-control inputs', () => {
+  test('should load form-control inputs', () => {
     const insideBanner = getComponent().find('.form-control');
     expect(insideBanner).toHaveLength(4);
   });
-  test('SHOULD load button', () => {
+  test('should load button', () => {
     const btnSuccess = getComponent().find('.btn-success');
     expect(btnSuccess.length).toBeGreaterThan(0);
   });

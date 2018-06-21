@@ -28,17 +28,17 @@ describe('PropertyRecommended component', () => {
     };
   });
 
-  test('SHOULD load item element', () => {
+  test('should load item element', () => {
     const item = getComponent().find('.item');
     expect(item.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load img-responsive element', () => {
+  test('should load img-responsive element', () => {
     const img = getComponent().find('.img-responsive');
     expect(img.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load first link', () => {
+  test('should load first link', () => {
     const link = getComponent().find('.col-lg-8 h5 a');
     const linkProps = link.props();
     expect(link.length).toBeGreaterThan(0);
@@ -46,7 +46,7 @@ describe('PropertyRecommended component', () => {
     expect(linkProps.children).toEqual(props.item.get('name'));
   });
 
-  test('SHOULD load second link', () => {
+  test('should load second link', () => {
     const link = getComponent().find('.col-lg-8 a.more');
     const linkProps = link.props();
     expect(link.length).toBeGreaterThan(0);

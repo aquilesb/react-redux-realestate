@@ -15,15 +15,15 @@ describe('InsideBanner component', () => {
     return mountedComponent;
   };
 
-  test('SHOULD load inside-banner element', () => {
+  test('should load inside-banner element', () => {
     const insideBanner = getComponent().find('.inside-banner');
     expect(insideBanner.length).toBeGreaterThan(0);
   });
-  test('SHOULD load form-control inputs', () => {
+  test('should load form-control inputs', () => {
     const link = getComponent().find('.inside-banner .container .pull-right a');
     expect(link.length).toBeGreaterThan(0);
   });
-  test('SHOULD load button', () => {
+  test('should load button', () => {
     const h2 = getComponent().find('.inside-banner .container h2');
     expect(h2.length).toBeGreaterThan(0);
   });

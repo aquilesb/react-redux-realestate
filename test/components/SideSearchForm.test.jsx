@@ -35,17 +35,17 @@ describe('SideSearchForm component', () => {
     };
   });
 
-  test('SHOULD load search-form element', () => {
+  test('should load search-form element', () => {
     const mainContact = getComponent().find('.search-form');
     expect(mainContact.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load type select element', () => {
+  test('should load type select element', () => {
     const type = getComponent().find('select.type');
     expect(type.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD trigger type onchange function', () => {
+  test('should trigger type onchange function', () => {
     const onSearchType = sinon.spy();
     props.changeSearchField = onSearchType;
     const type = getComponent(true).find('select.type');
@@ -54,12 +54,12 @@ describe('SideSearchForm component', () => {
     expect(onSearchType.calledWith('type', 'hello')).toBe(true);
   });
 
-  test('SHOULD load price select element', () => {
+  test('should load price select element', () => {
     const price = getComponent().find('select.price');
     expect(price.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD trigger price onchange function', () => {
+  test('should trigger price onchange function', () => {
     const onSearchPrice = sinon.spy();
     props.changeSearchField = onSearchPrice;
     const price = getComponent(true).find('select.price');
@@ -68,12 +68,12 @@ describe('SideSearchForm component', () => {
     expect(onSearchPrice.calledWith('price', 'hello')).toBe(true);
   });
 
-  test('SHOULD load property select element', () => {
+  test('should load property select element', () => {
     const property = getComponent().find('select.property');
     expect(property.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD trigger property onchange function', () => {
+  test('should trigger property onchange function', () => {
     const onSearchProperty = sinon.spy();
     props.changeSearchField = onSearchProperty;
     const property = getComponent(true).find('select.property');
@@ -82,7 +82,7 @@ describe('SideSearchForm component', () => {
     expect(onSearchProperty.calledWith('property', 'hello')).toBe(true);
   });
 
-  test('SHOULD load Find now button element', () => {
+  test('should load Find now button element', () => {
     const btn = getComponent(true).find('.btn-primary');
     expect(btn.length).toBeGreaterThan(0);
   });

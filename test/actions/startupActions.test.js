@@ -21,7 +21,7 @@ describe('Startup Actions', () => {
     fetchMock.restore();
   });
 
-  test('SHOULD load all data', () => {
+  test('should load all data', () => {
     fetchMock.getOnce('/api/agents/list', agentsList);
     fetchMock.getOnce('/api/properties/featured', featuredProperties);
     fetchMock.getOnce('/api/properties/recommended', featuredProperties);

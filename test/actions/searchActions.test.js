@@ -36,7 +36,7 @@ describe('SearchActions', () => {
     fetchMock.restore();
   });
 
-  test('SHOULD change Sort By and load search again', () => {
+  test('should change Sort By and load search again', () => {
     const params = initialStateSearch.getIn(['search', 'fields']).set('qnt', initialStateSearch.getIn(['search', 'qntSearch'])).set('index', 0).set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
       .toJS();
     fetchMock.getOnce(`/api/search/?${queryString.stringify(params)}`, { data: featuredProperties, total: 102 });
@@ -68,7 +68,7 @@ describe('SearchActions', () => {
     });
   });
 
-  test('SHOULD update Search Parameters', () => {
+  test('should update Search Parameters', () => {
     const state = fromJS({
       search: {
         timesSearched: 2,
@@ -91,7 +91,7 @@ describe('SearchActions', () => {
     });
   });
 
-  test('SHOULD update Search Parameters totalLoaded higher than totalResults', () => {
+  test('should update Search Parameters totalLoaded higher than totalResults', () => {
     const state = fromJS({
       search: {
         timesSearched: 2,
@@ -114,15 +114,15 @@ describe('SearchActions', () => {
     });
   });
 
-  test('SHOULD reset search parameters', () => {
+  test('should reset search parameters', () => {
     expect(actions.resetSearchParams()).toEqual({ type: actions.SEARCH_RESET_PARAMS });
   });
 
-  test('SHOULD change search field value', () => {
+  test('should change search field value', () => {
     expect(actions.changeSearchField('type', 3)).toEqual({ type: actions.SEARCH_CHANGE_FIELD, field: 'type', value: 3 });
   });
 
-  test('SHOULD load price types', () => {
+  test('should load price types', () => {
     fetchMock.getOnce('/api/prices/list', priceType);
 
     const expectedActions = [
@@ -136,7 +136,7 @@ describe('SearchActions', () => {
     });
   });
 
-  test('SHOULD not load price types', () => {
+  test('should not load price types', () => {
     const error = 'test.body.error.message';
     fetchMock.getOnce('/api/prices/list', {
       status: 404,

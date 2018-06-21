@@ -11,7 +11,7 @@ describe('Header component', () => {
   let props;
   const getComponent = (isNew = false) => {
     if (!mountedComponent || isNew) {
-      mountedComponent = mount(<MemoryRouter><Header {...props}/></MemoryRouter>);
+      mountedComponent = mount(<MemoryRouter><Header {...props} /></MemoryRouter>);
     }
     return mountedComponent;
   };
@@ -19,79 +19,79 @@ describe('Header component', () => {
   beforeAll(() => {
     props = {
       match: {
-        url:'/'
-      }
+        url: '/',
+      },
     };
-  })
+  });
 
-  test('SHOULD load header element', () => {
+  test('should load header element', () => {
     const header = getComponent().find('header');
     expect(header.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD load header icons', () => {
+  test('should load header icons', () => {
     const icons = getComponent().find('.navbar-header .icon-bar');
     expect(icons).toHaveLength(3);
   });
 
-  test('SHOULD load header links', () => {
+  test('should load header links', () => {
     const linkList = getComponent().find('.navbar-collapse ul li');
     expect(linkList).toHaveLength(5);
   });
 
-  test('SHOULD load logo image', () => {
+  test('should load logo image', () => {
     const logo = getComponent().find('.container .header #logo');
     expect(logo.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD home link be active', () => {
+  test('should home link be active', () => {
     const link = getComponent().find('.navbar-collapse .navbar-right li.active .link-home');
     expect(link.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD home link inactive', () => {
+  test('should home link inactive', () => {
     props.match.url = '/about';
     const link = getComponent(true).find('.navbar-collapse .navbar-right li.active .link-home');
     expect(link.length).toEqual(0);
   });
 
-  test('SHOULD about link active', () => {
+  test('should about link active', () => {
     props.match.url = '/about';
     const link = getComponent(true).find('.navbar-collapse .navbar-right li.active .link-about');
     expect(link.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD agents link active', () => {
+  test('should agents link active', () => {
     props.match.url = '/agents';
     const link = getComponent(true).find('.navbar-collapse .navbar-right li.active .link-agents');
     expect(link.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD agents link inactive', () => {
+  test('should agents link inactive', () => {
     props.match.url = '/';
     const link = getComponent(true).find('.navbar-collapse .navbar-right li.active .link-agents');
     expect(link.length).toEqual(0);
   });
 
-  test('SHOULD blog link active', () => {
+  test('should blog link active', () => {
     props.match.url = '/blog';
     const link = getComponent(true).find('.navbar-collapse .navbar-right li.active .link-blog');
     expect(link.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD blog link inactive', () => {
+  test('should blog link inactive', () => {
     props.match.url = '/';
     const link = getComponent(true).find('.navbar-collapse .navbar-right li.active .link-blog');
     expect(link.length).toEqual(0);
   });
 
-  test('SHOULD contact link active', () => {
+  test('should contact link active', () => {
     props.match.url = '/contact';
     const link = getComponent(true).find('.navbar-collapse .navbar-right li.active .link-contact');
     expect(link.length).toBeGreaterThan(0);
   });
 
-  test('SHOULD contact link inactive', () => {
+  test('should contact link inactive', () => {
     props.match.url = '/';
     const link = getComponent(true).find('.navbar-collapse .navbar-right li.active .link-contact');
     expect(link.length).toEqual(0);

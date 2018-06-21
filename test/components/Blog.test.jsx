@@ -15,15 +15,15 @@ describe('Blog component', () => {
     return mountedComponent;
   };
 
-  test('SHOULD load main blog element', () => {
+  test('should load main blog element', () => {
     const mainBlog = getComponent().find('.blog');
     expect(mainBlog.length).toBeGreaterThan(0);
   });
-  test('SHOULD load inside banner', () => {
+  test('should load inside banner', () => {
     const insideBanner = getComponent().find('.inside-banner');
     expect(insideBanner.length).toBeGreaterThan(0);
   });
-  test('SHOULD load thumbnail image', () => {
+  test('should load thumbnail image', () => {
     const thumbnailLink = getComponent().find('a.thumbnail');
     expect(thumbnailLink.length).toBeGreaterThan(0);
   });

@@ -14,7 +14,7 @@ describe('AgentActions actions', () => {
     fetchMock.restore();
   });
 
-  test('SHOULD load agents', () => {
+  test('should load agents', () => {
     fetchMock.getOnce('/api/agents/list', agentsList);
 
     const expectedActions = [
@@ -28,7 +28,7 @@ describe('AgentActions actions', () => {
     });
   });
 
-  test('SHOULD not load agents', () => {
+  test('should not load agents', () => {
     const error = 'test.body.error.message';
     fetchMock.getOnce('/api/agents/list', {
       status: 404,

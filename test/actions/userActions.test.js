@@ -24,7 +24,7 @@ describe('userActions actions', () => {
     fetchMock.restore();
   });
 
-  test('SHOULD load user details', () => {
+  test('should load user details', () => {
     const userID = initialState.getIn(['user', 'id']);
     fetchMock.getOnce(`/api/user/${userID}`, userDetail);
 
@@ -39,7 +39,7 @@ describe('userActions actions', () => {
     });
   });
 
-  test('SHOULD not load user details', () => {
+  test('should not load user details', () => {
     const userID = initialState.getIn(['user', 'id']);
     const error = 'test.body.error.message';
     fetchMock.getOnce(`/api/user/${userID}`, {

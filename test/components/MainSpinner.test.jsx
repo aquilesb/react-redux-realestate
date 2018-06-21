@@ -15,15 +15,15 @@ describe('MainSpinner component', () => {
     return mountedComponent;
   };
 
-  test('SHOULD load spinner element', () => {
+  test('should load spinner element', () => {
     const spinner = getComponent().find('.main-spinner-wrapper .spinner');
     expect(spinner.length).toBeGreaterThan(0);
   });
-  test('SHOULD load double-bounce1', () => {
+  test('should load double-bounce1', () => {
     const doubleBounce1 = getComponent().find('.main-spinner-wrapper .spinner .double-bounce1');
     expect(doubleBounce1.length).toBeGreaterThan(0);
   });
-  test('SHOULD load button', () => {
+  test('should load button', () => {
     const doubleBounce2 = getComponent().find('.main-spinner-wrapper .spinner .double-bounce2');
     expect(doubleBounce2.length).toBeGreaterThan(0);
   });
