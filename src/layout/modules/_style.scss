@@ -259,6 +259,9 @@ table {
 
 .recommended {
   position: relative;
+  .slider {
+    height: 130px !important;
+  }
   .carousel-indicators {
     position: absolute;
     text-align: left;
