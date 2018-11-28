@@ -11,7 +11,7 @@
     "build": "rimraf dist/ && npm run webpack-prod && npm run copy-files",
     "webpack-prod": "webpack --config webpack.prod.config.js",
     "webpack-dev": "webpack --config webpack.dev.config.js",
-    "copy-files": "cpx public/**/*.{css,png,jpg,eot,svg,ttf,woff} dist/",
+    "copy-files": "cpx public/**/*.{css,png,jpg,eot,svg,ttf,woff,html} dist/",
     "posttest": "eslint .",
     "test": "jest --coverage"
   },
