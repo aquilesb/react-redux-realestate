@@ -75,16 +75,16 @@ module.exports = {
         res.sendFile(`${process.cwd()}/dist/index.html`);
       });
       app.get('/api/properties/featured', (req, res) => {
-        res.sendFile(`${process.cwd()}/src/test/mockData/featuredProperties.json`);
+        res.sendFile(`${process.cwd()}/test/mockData/featuredProperties.json`);
       });
       app.get('/api/properties/recommended', (req, res) => {
-        res.sendFile(`${process.cwd()}/src/test/mockData/featuredProperties.json`);
+        res.sendFile(`${process.cwd()}/test/mockData/featuredProperties.json`);
       });
       app.get('/api/properties/hot', (req, res) => {
-        res.sendFile(`${process.cwd()}/src/test/mockData/featuredProperties.json`);
+        res.sendFile(`${process.cwd()}/test/mockData/featuredProperties.json`);
       });
       app.get('/api/search', (req, res) => {
-        const data = require(`${process.cwd()}/src/test/mockData/featuredProperties.json`);
+        const data = require(`${process.cwd()}/test/mockData/featuredProperties.json`);
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify({
           data,
@@ -92,13 +92,13 @@ module.exports = {
         }));
       });
       app.get('/api/agents/list', (req, res) => {
-        res.sendFile(`${process.cwd()}/src/test/mockData/agents.json`);
+        res.sendFile(`${process.cwd()}/test/mockData/agents.json`);
       });
       app.get('/api/prices/list', (req, res) => {
-        res.sendFile(`${process.cwd()}/src/test/mockData/priceType.json`);
+        res.sendFile(`${process.cwd()}/test/mockData/priceType.json`);
       });
       app.get('/api/user/:id', (req, res) => {
-        res.sendFile(`${process.cwd()}/src/test/mockData/userDetail.json`);
+        res.sendFile(`${process.cwd()}/test/mockData/userDetail.json`);
       });
     },
   },
