@@ -27,13 +27,13 @@
     },
     {
         "id": 2,
-        "encodedUrl": "Brunswick+Victoria+street+vic+3056",
-        "name": "Luxury home",
-        "price": 234900,
+        "encodedUrl": "Point+Cook+Sneydes+road+vic+3031",
+        "name": "Middle class home",
+        "price": 134900,
         "features": {
-            "bedroom": 3,
-            "bathroom": 2,
-            "parking": 1,
+            "bedroom": 2,
+            "bathroom": 1,
+            "parking": 0,
             "kitchen": 1
         },
         "images": [
@@ -44,8 +44,8 @@
             "/static/images/3.jpg"
         ],
         "status": "new",
-        "address": "Brunswick,Victoria Street, 3056, Victoria, Australia",
-        "googleMapsAddress": "Brunswick,+Victoria+Street,+3056,+Victoria,+Australia",
+        "address": "Point Cook,Sneydes Road, 3031, Victoria, Australia",
+        "googleMapsAddress": "Point+Cook,+Sneydes+Road,+3031,+Victoria,+Australia",
         "agent": {
             "name": "John Parker",
             "phone": "009 229 2929"

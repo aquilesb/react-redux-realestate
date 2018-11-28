@@ -33,6 +33,7 @@ describe('PropertyContainer', () => {
     state = fromJS({
       properties: {
         featured: propertyList,
+        hot: propertyList,
       },
     });
   });
@@ -53,7 +54,7 @@ describe('PropertyContainer', () => {
 
   test('should render hot-properties element rows', () => {
     const component = getComponent().find('.hot-properties .row');
-    expect(component).toHaveLength(4);
+    expect(component).toHaveLength(10);
   });
 
   test('should render advertisement element', () => {

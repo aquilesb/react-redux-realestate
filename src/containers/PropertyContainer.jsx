@@ -25,7 +25,7 @@ class PropertyContainer extends PureComponent {
               <div className="col-lg-3 col-sm-4 hidden-xs">
                 <div className="hot-properties hidden-xs">
                   <h4>Hot Properties</h4>
-                  { hotProps.size > 0 && hotProps.map(item => <PropertyHot item={item} key={item.get('id')} />)}
+                  { !!hotProps && hotProps.size > 0 && hotProps.map(item => <PropertyHot item={item} key={item.get('id')} />)}
                 </div>
                 <div className="advertisement">
                   <h4>Advertisements</h4>
