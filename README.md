@@ -12,9 +12,35 @@ It is already building the files for production as well.
 
 ## Installation
 
+Set NODE_ENV to development
+On linux:
+```
+$ export NODE_ENV=development
+```
+On Windows:
+```
+$ set NODE_ENV=development
+```
+
+Install project libs
 ```
 $ npm install
 ```
+
+## Running
+In the first time you have to build the development files:
+
+```
+$ npm run build-env
+```
+
+Start the application:
+
+```
+$ npm start
+```
+
+
 ## Tests
 
 ```
