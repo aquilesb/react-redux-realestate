@@ -5,53 +5,27 @@ import { connect } from 'react-redux';
 import renderHTML from 'react-render-html';
 import Carousel from 'nuka-carousel';
 import InsideBanner from '../components/InsideBanner';
+import PropertyHot from '../components/PropertyHot';
 import { format2Money } from '../utils/formatUtils';
 import { carouselDots } from '../utils/carouselUtils';
 
 class PropertyContainer extends PureComponent {
   render() {
-    const { property } = this.props;
+    const { property, hotProps } = this.props;
     if (!property) {
       return null;
     }
 
     return (
       <main className="property-section">
-        <InsideBanner />
+        <InsideBanner title="Property Detail" />
         <section className="container">
           <div className="properties-listing spacer">
             <div className="row">
               <div className="col-lg-3 col-sm-4 hidden-xs">
                 <div className="hot-properties hidden-xs">
                   <h4>Hot Properties</h4>
-                  <div className="row">
-                    <div className="col-lg-4 col-sm-5"><img src="/static/images/3.jpg" className="img-responsive img-circle" alt="properties" /></div>
-                    <div className="col-lg-8 col-sm-7">
-                      <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                      <p className="price">$300,000</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-lg-4 col-sm-5"><img src="/static/images/3.jpg" className="img-responsive img-circle" alt="properties" /></div>
-                    <div className="col-lg-8 col-sm-7">
-                      <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                      <p className="price">$300,000</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-lg-4 col-sm-5"><img src="/static/images/3.jpg" className="img-responsive img-circle" alt="properties" /></div>
-                    <div className="col-lg-8 col-sm-7">
-                      <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                      <p className="price">$300,000</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-lg-4 col-sm-5"><img src="/static/images/3.jpg" className="img-responsive img-circle" alt="properties" /></div>
-                    <div className="col-lg-8 col-sm-7">
-                      <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                      <p className="price">$300,000</p>
-                    </div>
-                  </div>
+                  { hotProps.size > 0 && hotProps.map(item => <PropertyHot item={item} key={item.get('id')} />)}
                 </div>
                 <div className="advertisement">
                   <h4>Advertisements</h4>
@@ -148,6 +122,12 @@ PropertyContainer.propTypes = {
       kitchen: PropTypes.number.isRequired,
     }).isRequired,
   }),
+  hotProps: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
+    encodedUrl: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    images: ImmutablePropTypes.list.isRequired,
+    price: PropTypes.number.isRequired,
+  })).isRequired,
 };
 
 PropertyContainer.defaultProps = {
@@ -156,7 +136,8 @@ PropertyContainer.defaultProps = {
 
 const mapStateToProps = (state, { match }) => {
   const property = state.getIn(['properties', 'featured']).find(item => item.get('encodedUrl') === match.params.name);
-  return { property };
+  const hotProps = state.getIn(['properties', 'hot']);
+  return { property, hotProps };
 };
 
 const functions = {};

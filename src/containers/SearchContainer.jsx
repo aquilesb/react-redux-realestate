@@ -31,7 +31,7 @@ class SearchContainer extends PureComponent {
 
     return (
       <main className="search" >
-        <InsideBanner />
+        <InsideBanner title="Search" />
         <section className="container">
           <div className="properties-listing spacer">
             <div className="row">
@@ -46,7 +46,7 @@ class SearchContainer extends PureComponent {
                 />
                 <div className="hot-properties hidden-xs">
                   <h4>Hot Properties</h4>
-                  { !!hotProps > 0 && hotProps.map(item => <PropertyHot item={item} key={item.get('id')} />)}
+                  { hotProps.size > 0 && hotProps.map(item => <PropertyHot item={item} key={item.get('id')} />)}
                 </div>
               </div>
               <div className="col-lg-9 col-sm-8">
@@ -68,10 +68,10 @@ class SearchContainer extends PureComponent {
                     hasMore={hasMore2Load}
                     loader={loader}
                   >
-                    { !!searched > 0 && searched.map((item, index) =>
-                    /* TODO remove index when create backend */
+                    { !!searched > 0 && searched.map(item =>
+                    /* TODO remove time when create backend unique IDs */
                       (
-                        <div className="col-lg-4 col-sm-6" key={`container-${item.get('id')}-${index + 10}`}>
+                        <div className="col-lg-4 col-sm-6" key={`container-${item.get('id')}-${new Date().getTime()}`}>
                           <PropertyListItem item={item} key={item.get('id')} />
                         </div>
                       )) }

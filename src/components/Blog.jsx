@@ -6,7 +6,7 @@ class Blog extends PureComponent {
   render() {
     return (
       <main className="blog">
-        <InsideBanner />
+        <InsideBanner title="Blog" />
         <section className="container">
           <div className="spacer blog">
             <div className="row">

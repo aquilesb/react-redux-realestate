@@ -5,7 +5,7 @@ class Contact extends PureComponent {
   render() {
     return (
       <main className="contact">
-        <InsideBanner />
+        <InsideBanner title="Contact Us" />
         <section className="container">
           <div className="spacer">
             <div className="row contact">

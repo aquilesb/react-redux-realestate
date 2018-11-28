@@ -23,7 +23,7 @@ class SideSearchForm extends PureComponent {
               <option value="3">Sale</option>
             </select>
           </div>
-          <div className="col-lg-7">onSearchProperty
+          <div className="col-lg-7">
             <select className="form-control price" value={searchPrice} onChange={e => changeSearchField('price', e.target.value)}>
               <option>Price</option>
               {!!priceListItem.get('list') && priceListItem.get('list').map(item => <option key={item}>{item}</option>)}

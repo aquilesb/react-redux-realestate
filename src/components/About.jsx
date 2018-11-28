@@ -5,7 +5,7 @@ class About extends PureComponent {
   render() {
     return (
       <main className="about">
-        <InsideBanner />
+        <InsideBanner title="About Us" />
         <section className="container">
           <div className="spacer">
             <div className="row">

@@ -14,7 +14,7 @@ class AgentsContainer extends PureComponent {
 
     return (
       <main className="agents">
-        <InsideBanner />
+        <InsideBanner title="Agents" />
         <section className="container">
           <div className="spacer agents">
             {agentsList.map(agent =>
