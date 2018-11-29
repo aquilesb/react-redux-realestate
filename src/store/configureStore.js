@@ -1,24 +1,27 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { apiMiddleware } from 'redux-api-middleware';
-import { routerMiddleware } from 'react-router-redux';
+import { routerMiddleware } from 'connected-react-router/immutable';
+import reduxApiMiddlewareError from '../middlewares/redux-api-middleware-error';
 import rootReducer from '../reducers';
 
-const createStoreWithMiddleware = history =>
-  applyMiddleware(
-    thunk,
-    routerMiddleware(history),
-    apiMiddleware,
-  )(createStore);
-
 const configureStore = (initialState, history) => {
-  if (process.env.NODE_ENV !== 'production') {
-    /* eslint-disable */
-    const { devToolsEnhancer } = require('redux-devtools-extension');
-    /* eslint-enable */
-    return createStoreWithMiddleware(history)(rootReducer, initialState, devToolsEnhancer());
+  let composeEnhancer;
+  if (process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) { // eslint-disable-line
+    composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__; // eslint-disable-line
+  } else {
+    composeEnhancer = compose;
   }
-  return createStoreWithMiddleware(history)(rootReducer, initialState);
+  return createStore(
+    rootReducer(history),
+    initialState,
+    composeEnhancer(applyMiddleware(
+      thunk,
+      routerMiddleware(history),
+      apiMiddleware,
+      reduxApiMiddlewareError,
+    )),
+  );
 };
 
 export default configureStore;

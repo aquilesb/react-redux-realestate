@@ -25,6 +25,12 @@ export default (state = initialState, action) => {
     case Actions.PROPERTIES_GET_HOT_SUCCESS:
       return state.set('hot', action.payload);
 
+    case Actions.PROPERTIES_GET_NEW_SUCCESS:
+      return state.set('new', action.payload);
+
+    case Actions.PROPERTIES_GET_NEW_FAILURE:
+      return state.set('new', action.payload);
+
     default:
       return state;
   }

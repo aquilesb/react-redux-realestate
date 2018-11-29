@@ -155,7 +155,7 @@ describe('Propertie actions', () => {
     const params = initialStateSearch.getIn(['search', 'fields']).set('qnt', initialStateSearch.getIn(['search', 'qntSearch'])).set('index', initialStateSearch.getIn(['search', 'timesSearched'])).set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
       .toJS();
     fetchMock.getOnce(`/api/search/?${queryString.stringify(params)}`, { data: featuredProperties, total: 102 });
-    jest.mock('react-router-redux', () => jest.fn());
+    jest.mock('connected-react-router', () => jest.fn());
 
     const state = initialStateSearch.set('router', { location: { pathname: '/' } });
 

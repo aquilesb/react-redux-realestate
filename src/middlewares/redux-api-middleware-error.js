@@ -16,7 +16,7 @@ export default store => next => (action) => {
       // const errorMsg = 'Your session has expired. Please login again.';
       // store.dispatch(logout(true, errorMsg))
     } else if (action.payload.status === 404) {
-      // store.dispatch(push('/404'))
+      // store.dispatch(push('/404'))zz
     }
   } else {
     // So the middleware doesn't get applied to every single action

@@ -1,7 +1,7 @@
 import { CALL_API } from 'redux-api-middleware';
 import { fromJS } from 'immutable';
 import queryString from 'query-string';
-import { push } from 'react-router-redux';
+import { push } from 'connected-react-router';
 import { updateSearchParams, resetSearchParams } from './searchActions';
 import { ajaxFailure } from '../utils/ajaxUtils';
 
@@ -81,7 +81,7 @@ const doSearch = params => dispatch =>
             response.json().then((json) => {
               dispatch(updateSearchParams(json.total));
 
-              if (reduxState.get('router').location.pathname.indexOf('/search') === -1) {
+              if (reduxState.getIn(['router', 'location', 'pathname']).indexOf('/search') === -1) {
                 dispatch(push('/search'));
               }
 
