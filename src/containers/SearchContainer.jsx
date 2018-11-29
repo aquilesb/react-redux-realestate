@@ -68,10 +68,10 @@ class SearchContainer extends PureComponent {
                     hasMore={hasMore2Load}
                     loader={loader}
                   >
-                    { !!searched > 0 && searched.map(item =>
+                    { !!searched > 0 && searched.map((item, index) =>
                     /* TODO remove time when create backend unique IDs */
                       (
-                        <div className="col-lg-4 col-sm-6" key={`container-${item.get('id')}-${new Date().getTime()}`}>
+                        <div className="col-lg-4 col-sm-6" key={`container-${item.get('id')}-${index}`}>
                           <PropertyListItem item={item} key={item.get('id')} />
                         </div>
                       )) }
