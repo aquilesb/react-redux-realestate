@@ -11,6 +11,7 @@ import About from './About';
 import Blog from './Blog';
 import Contact from './Contact';
 import BlogDetail from './BlogDetail';
+import NotFound from './NotFound';
 
 const Routes = () => (
   <Switch>
@@ -22,6 +23,8 @@ const Routes = () => (
     <Route exact path="/blog" component={Blog} />
     <Route path="/property/:name" component={PropertyContainer} />
     <Route path="/blog/:name" component={BlogDetail} />
+    <Route path="/not-found" component={NotFound} />
+    <Route component={NotFound} />
   </Switch>
 );
 

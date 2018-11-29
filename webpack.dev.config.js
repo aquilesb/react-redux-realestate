@@ -100,6 +100,24 @@ module.exports = {
       app.get('/api/user/:id', (req, res) => {
         res.sendFile(`${process.cwd()}/test/mockData/userDetail.json`);
       });
+      app.get('*', (req, res, next) => {
+        const check = ext => req.originalUrl.indexOf(ext) === -1;
+        if (
+          check('.js')
+          && check('.css')
+          && check('.jpg')
+          && check('.png')
+          && check('.svg')
+          && check('.ttf')
+          && check('.eot')
+          && check('.woff')
+          && check('.ico')
+        ){
+          res.sendFile(`${process.cwd()}/dist/index.html`);
+        } else {
+          next();
+        }
+      });
     },
   },
 };
