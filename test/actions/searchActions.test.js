@@ -28,7 +28,7 @@ describe('SearchActions', () => {
       },
       properties: {
       },
-    }).set('router', { location: { pathname: '/search' } });
+    }).setIn(['router', 'location', 'pathname'], '/search');
   });
 
   afterEach(() => {

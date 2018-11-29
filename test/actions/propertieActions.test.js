@@ -27,7 +27,7 @@ describe('Propertie actions', () => {
       },
       properties: {
       },
-    }).set('router', { location: { pathname: '/search' } });
+    }).setIn(['router', 'location', 'pathname'], '/search');
   });
 
   afterEach(() => {
@@ -40,7 +40,9 @@ describe('Propertie actions', () => {
 
     const expectedActions = [
       { type: actions.PROPERTIES_GET_FEATURED_PROP },
-      { type: actions.PROPERTIES_GET_FEATURED_PROP_SUCCESS, payload: fromJS(featuredProperties) },
+      {
+        type: actions.PROPERTIES_GET_FEATURED_PROP_SUCCESS, payload: fromJS(featuredProperties),
+      },
     ];
 
     const store = mockStore({});
@@ -118,7 +120,10 @@ describe('Propertie actions', () => {
 
     const expectedActions = [
       { type: actions.PROPERTIES_GET_HOT },
-      { type: actions.PROPERTIES_GET_HOT_SUCCESS, payload: fromJS(featuredProperties).slice(0, 4) },
+      {
+        type: actions.PROPERTIES_GET_HOT_SUCCESS,
+        payload: fromJS(featuredProperties).slice(0, 4),
+      },
     ];
 
     const store = mockStore({});
@@ -152,12 +157,16 @@ describe('Propertie actions', () => {
   });
 
   test('should load the infinite search not from search page', () => {
-    const params = initialStateSearch.getIn(['search', 'fields']).set('qnt', initialStateSearch.getIn(['search', 'qntSearch'])).set('index', initialStateSearch.getIn(['search', 'timesSearched'])).set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
+    const params = initialStateSearch
+      .getIn(['search', 'fields'])
+      .set('qnt', initialStateSearch.getIn(['search', 'qntSearch']))
+      .set('index', initialStateSearch.getIn(['search', 'timesSearched']))
+      .set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
       .toJS();
     fetchMock.getOnce(`/api/search/?${queryString.stringify(params)}`, { data: featuredProperties, total: 102 });
     jest.mock('connected-react-router', () => jest.fn());
 
-    const state = initialStateSearch.set('router', { location: { pathname: '/' } });
+    const state = initialStateSearch.setIn(['router', 'location', 'pathname'], '/');
 
     const expectedActions = [
       { type: actions.PROPERTIES_SEARCH },
@@ -190,9 +199,16 @@ describe('Propertie actions', () => {
   });
 
   test('should load the infinite search from search page', () => {
-    const params = initialStateSearch.getIn(['search', 'fields']).set('qnt', initialStateSearch.getIn(['search', 'qntSearch'])).set('index', initialStateSearch.getIn(['search', 'timesSearched'])).set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
+    const params = initialStateSearch
+      .getIn(['search', 'fields'])
+      .set('qnt', initialStateSearch.getIn(['search', 'qntSearch']))
+      .set('index', initialStateSearch.getIn(['search', 'timesSearched']))
+      .set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
       .toJS();
-    fetchMock.getOnce(`/api/search/?${queryString.stringify(params)}`, { data: featuredProperties, total: 102 });
+    fetchMock.getOnce(
+      `/api/search/?${queryString.stringify(params)}`,
+      { data: featuredProperties, total: 102 },
+    );
 
     const expectedActions = [
       { type: actions.PROPERTIES_SEARCH },
@@ -216,7 +232,11 @@ describe('Propertie actions', () => {
   });
 
   test('should not load the infinite search', () => {
-    const params = initialStateSearch.getIn(['search', 'fields']).set('qnt', initialStateSearch.getIn(['search', 'qntSearch'])).set('index', initialStateSearch.getIn(['search', 'timesSearched'])).set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
+    const params = initialStateSearch
+      .getIn(['search', 'fields'])
+      .set('qnt', initialStateSearch.getIn(['search', 'qntSearch']))
+      .set('index', initialStateSearch.getIn(['search', 'timesSearched']))
+      .set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
       .toJS();
 
     const error = 'test.body.error.message';
@@ -243,10 +263,15 @@ describe('Propertie actions', () => {
   });
 
   test('should search property', () => {
-    const params = initialStateSearch.getIn(['search', 'fields']).set('qnt', initialStateSearch.getIn(['search', 'qntSearch'])).set('index', 0).set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
+    const params = initialStateSearch.getIn(['search', 'fields'])
+      .set('qnt', initialStateSearch.getIn(['search', 'qntSearch']))
+      .set('index', 0)
+      .set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
       .toJS();
-    fetchMock.getOnce(`/api/search/?${queryString.stringify(params)}`, { data: featuredProperties, total: 102 });
-
+    fetchMock.getOnce(
+      `/api/search/?${queryString.stringify(params)}`,
+      { data: featuredProperties, total: 102 },
+    );
     const event = {
       preventDefault: () => jest.fn(),
     };
@@ -275,7 +300,11 @@ describe('Propertie actions', () => {
   });
 
   test('should not search property', () => {
-    const params = initialStateSearch.getIn(['search', 'fields']).set('qnt', initialStateSearch.getIn(['search', 'qntSearch'])).set('index', 0).set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
+    const params = initialStateSearch
+      .getIn(['search', 'fields'])
+      .set('qnt', initialStateSearch.getIn(['search', 'qntSearch']))
+      .set('index', 0)
+      .set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
       .toJS();
     const error = 'test.body.error.message';
     fetchMock.getOnce(`/api/search/?${queryString.stringify(params)}`, {
