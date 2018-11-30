@@ -33,8 +33,6 @@ if (IS_PROD) {
     store.dispatch(loadInitialData());
   }, 500);
 
-  console.log('module.hot', module.hot);
-  
   if (module.hot) {
     module.hot.accept(() => {
       render();

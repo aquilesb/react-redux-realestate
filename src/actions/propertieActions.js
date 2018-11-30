@@ -19,6 +19,10 @@ export const PROPERTIES_GET_HOT = 'PROPERTIES_GET_HOT';
 export const PROPERTIES_GET_HOT_SUCCESS = 'PROPERTIES_GET_HOT_SUCCESS';
 export const PROPERTIES_GET_HOT_FAILURE = 'PROPERTIES_GET_HOT_FAILURE';
 
+export const PROPERTIES_GET_NEW = 'PROPERTIES_GET_NEW';
+export const PROPERTIES_GET_NEW_SUCCESS = 'PROPERTIES_GET_NEW_SUCCESS';
+export const PROPERTIES_GET_NEW_FAILURE = 'PROPERTIES_GET_NEW_FAILURE';
+
 export const PROPERTIES_SEARCH = 'PROPERTIES_SEARCH';
 export const PROPERTIES_SEARCH_SUCCESS = 'PROPERTIES_SEARCH_SUCCESS';
 export const PROPERTIES_SEARCH_FAILURE = 'PROPERTIES_SEARCH_FAILURE';
@@ -66,6 +70,21 @@ export const getHotProps = () => ({
       ajaxFailure(PROPERTIES_GET_HOT_FAILURE),
     ],
     endpoint: '/api/properties/hot',
+    method: 'GET',
+  },
+});
+
+export const getNewProps = () => ({
+  [CALL_API]: {
+    types: [
+      PROPERTIES_GET_NEW,
+      {
+        type: PROPERTIES_GET_NEW_SUCCESS,
+        payload: (_, state, response) => response.json().then(json => fromJS(json).slice(0, 4)),
+      },
+      ajaxFailure(PROPERTIES_GET_NEW_FAILURE),
+    ],
+    endpoint: '/api/properties/new',
     method: 'GET',
   },
 });

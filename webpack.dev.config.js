@@ -15,7 +15,7 @@ module.exports = {
       use: ['babel-loader'],
     },
     {
-      test: /\.scss$/,
+      test: /\.(scss|css)$/,
       use: [{
         loader: "style-loader", // creates style nodes from JS strings
       }, {
@@ -82,6 +82,9 @@ module.exports = {
       });
       app.get('/api/properties/hot', (req, res) => {
         res.sendFile(`${process.cwd()}/test/mockData/featuredProperties.json`);
+      });
+      app.get('/api/properties/new', (req, res) => {
+        res.status(404).json({ message: 'An error has happened loading new properties. Try again.' });
       });
       app.get('/api/search', (req, res) => {
         const data = require(`${process.cwd()}/test/mockData/featuredProperties.json`);
