@@ -1,0 +1,41 @@
+{
+    "users": [{
+        "id": "cfbc3d50-f920-11e8-9b94-d97e7107467d",
+        "name": "Hernandez",
+        "email": "hernandez@gmail.com",
+        "password": "123456789",
+        "address": "510/179 Collings Street 44444",
+        "tokens": ["z2hN4mHLNBk0tCoSQOVTq9NnWxLCfD2x", "xINsaeSrt5Q2WyuSFyjBXKRQsmSTS2kW", "33cqegqYXl9a5lIHDPei4jXJ4M6DC2iI", "SSwPW3VENrgFCrJn68ABKUCQy387kqjU", "atf8QZQNyXRYxlyuGHLfdZOgHtj1oV8tKaTL8ViXpCLISVXDtLjc97NkIBr5He4S", "5n4xJuL8b1QWZtGlYLCZ5EkTNfp5T68Y1bQCqE7vBI3xpgzgMt936YZl1nWDpjS2", "eRgZ8SaHRxpfS2rzEjQumrVQGDGqaPh4T3Wh5DM5iMg5hdBOZs67TURfZGg7AHYp",
+            "rplOs6UQfqIpXqzjbnpEj3TvTl4fcCYvZPihpCYK8G4WGVTmEE3Bh4PxHRvNigQG", "9sPU263mgmO4zT8BBSPJJDYZ6hGYRBwMSigdseEaXchhxsG1D4mgMPRVkYl4vHXN", "e3WEwl38DS3djwfMAsFSaoYIxgGerLrblbHYZw8x2NPjmczr3A8ypJcYBy6B4bpU", "mMxR3Nl1TtjaT14wLfOkrwwI4hUsi5pHbGkkI5SJBUQt5tU3ZQRsuKNeY93jCBnx", "tHfYT7hlVjRZj4jluPu6bwKgYA3I51NCapkZZ7FsDjFV51RsRCe1cqHQSuG554tG",
+            "4ZR0nBh4bX6nAXenpg6ifLS126GUJyRrA7E5vD1l4KJx3dSKL1WRXYIEl4fQnYJw", "wr2YfBgWp2wUMto749SNnmuBLjyzSVUAIIVXOfecsh6ZjKhw4NrmHro42ZVPpbBy", "l2o66TzRncd4Z2G0ntQ95YuqfRQLLvAAg2wsiRldRGVJFMkOUGFJ71sWbWVQNiJl", "JNQZA3mEopac9svcRIEtycwmvDnPVfhUGO7HCmyRfFS8Azfr2R4hzMfCF2wMNMnk"
+        ]
+    }, {
+        "id": "cfbc3d50-f920-11e8-9b94-d97e7107468d",
+        "name": "Romario Hernandez",
+        "email": "rhernandez@gmail.com",
+        "password": "123456789",
+        "address": "510/179 Collings Street",
+        "tokens": []
+    }, {
+        "id": "cfbc3d50-f920-11e8-9b94-d97e7107466d",
+        "name": "Romario",
+        "email": "romario@gmail.com",
+        "password": "123456789",
+        "address": "510/179 Collings Street",
+        "tokens": []
+    }, {
+        "id": "cfbc3d50-f920-11e8-9b94-d97e7107465d",
+        "name": "Ronaldo",
+        "email": "ronaldo@gmail.com",
+        "password": "123456789",
+        "address": "510/155 Collings Street",
+        "tokens": []
+    }, {
+        "id": "cfbc3d50-f920-11e8-9b94-d97e7107464d",
+        "name": "Nico",
+        "email": "nico@gmail.com",
+        "password": "123456789",
+        "address": "510/179 Collings Street",
+        "tokens": []
+    }]
+}
