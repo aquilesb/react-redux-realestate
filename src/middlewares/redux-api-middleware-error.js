@@ -1,5 +1,6 @@
 import { push } from 'connected-react-router';
-import { toast } from 'react-toastify';
+import { error } from '../utils/toastUtils';
+import { logout } from '../actions/userActions';
 
 export default store => next => (action) => {
   if (action.payload && action.payload.name === 'ApiError') {
@@ -11,22 +12,11 @@ export default store => next => (action) => {
         return next(action);
       }
     } else if (action.payload.status === 401) {
-      // const errorMsg = 'Your session has expired. Please login again.';
-      // TODO: logout user
+      store.dispatch(logout());
       store.dispatch(push('/not-found'));
     } else if (action.payload.status === 404) {
       // store.dispatch(push('/404'))
-      toast.error(
-        action.payload.message,
-        {
-          position: 'top-right',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        },
-      );
+      error(action.payload.message);
     }
   } else {
     // So the middleware doesn't get applied to every single action

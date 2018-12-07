@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux-immutable';
 import { connectRouter } from 'connected-react-router/immutable';
+import { reducer as form } from 'redux-form/immutable';
 import user from './user';
 import layout from './layout';
 import properties from './properties';
@@ -14,6 +15,7 @@ const rootReducer = history => combineReducers({
   agents,
   search,
   config,
+  form,
   router: connectRouter(history),
 });
 

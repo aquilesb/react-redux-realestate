@@ -11,20 +11,27 @@ body {
       background-color: rgba(0, 0, 0, .8);
       z-index: 2;
   }
-  .login-modal{
+  .login-modal {
     width: 500px;
-    height: 200px;
+    height: 250px;
     display: flex;
     justify-content: center;
-    .sign-in-form{
+    .sign-in-form, .sign-up {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       width: 45%;
       margin-right: auto;
     }
-    .sign-up{
-      width: 45%;
-      margin-left: auto;
-      .btn-info{
-        margin-top:20px;
+    .sign-up .btn-info{
+      margin-top:20px;
+    }
+  }
+  .ReactModalPortal {
+    .form {
+      .field-error {
+        color: red;
+        margin-left: 5px;
       }
     }
   }

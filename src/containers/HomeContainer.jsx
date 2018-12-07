@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { updateLoginModalIsOpen } from '../actions/layoutActions';
 import { changeSearchField } from '../actions/searchActions';
 import { onSearchProperty } from '../actions/propertieActions';
+import { login } from '../actions/userActions';
 import LoginModal from '../components/LoginModal';
 import PropertyListItem from '../components/PropertyListItem';
 import PropertyRecommended from '../components/PropertyRecommended';
@@ -40,6 +41,7 @@ class HomeContainer extends PureComponent {
       recommendedProperties,
       priceTypes,
       searchType,
+      loginAction,
     } = this.props;
     const priceListItem = priceTypes.find(item => item.get('type') === searchType);
 
@@ -132,13 +134,12 @@ class HomeContainer extends PureComponent {
           </div>
         </section>
         <ReactModal isOpen={loginModalOpen} onRequestClose={this.closeLoginModal} contentLabel="Modal" overlayClassName="modal-overlay" className="modal-content">
-          <LoginModal />
+          <LoginModal login={loginAction} />
         </ReactModal>
       </main>
     );
   }
 }
-
 
 HomeContainer.propTypes = {
   featuredProperties: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
@@ -170,6 +171,7 @@ HomeContainer.propTypes = {
   updateLoginModalIsOpen: PropTypes.func.isRequired,
   changeSearchField: PropTypes.func.isRequired,
   onSearchProperty: PropTypes.func.isRequired,
+  loginAction: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -184,6 +186,7 @@ const functions = {
   updateLoginModalIsOpen,
   changeSearchField,
   onSearchProperty,
+  loginAction: login,
 };
 
 export default connect(mapStateToProps, functions)(HomeContainer);

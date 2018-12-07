@@ -1,26 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import LoginForm from './LoginForm';
 
-class LoginModal extends Component {
-  render() {
-    return (
-      <section className="login-modal">
-        <div className="sign-in-form">
-          <h4>Login</h4>
-          <input type="text" className="form-control email" placeholder="Enter Email" name="form_email" />
-          <input type="password" className="form-control phone" placeholder="Password" name="form_phone" />
-          <button type="submit" className="btn btn-success" name="Submit">Sign in</button>
-        </div>
-        <div className="sign-up">
-          <h4>New User Sign Up</h4>
-          <div>
-            Join today and get updated with all the properties deal happening around.
-          </div>
-          <div><button className="btn btn-info">Join Now</button>
-          </div>
-        </div>
-      </section>
-    );
-  }
-}
+const LoginModal = props => (
+  <section className="login-modal">
+    <LoginForm onSubmit={props.login} />
+    <div className="sign-up">
+      <h4>New User Sign Up</h4>
+      <div>
+        Join today and get updated with all the properties deal happening around.
+      </div>
+      <div>
+        <Link to="/register" className="btn btn-info">Join Now</Link>
+      </div>
+    </div>
+  </section>
+);
+
+LoginModal.propTypes = {
+  login: PropTypes.func.isRequired,
+};
 
 export default LoginModal;

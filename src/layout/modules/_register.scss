@@ -1,0 +1,17 @@
+.register{
+  .inside-banner{
+    background: url(/images/bginside.jpg) #222;
+    padding: 20px 0;
+    color: #999;
+  }
+  .container{
+    .glyphicon-envelope, .glyphicon-earphone{
+      margin-right: 5px;
+    }
+    .form {
+      .reset {
+        margin-top: 20px;
+      }
+    }
+  }
+}
