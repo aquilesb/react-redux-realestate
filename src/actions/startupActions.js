@@ -7,7 +7,6 @@ import { updateIsProd } from './configActions';
 import { getPriceTypes } from './searchActions';
 
 const loadInitialData = () => (dispatch) => {
-
   const token = ls('accessToken');
   const userID = ls('userID');
 

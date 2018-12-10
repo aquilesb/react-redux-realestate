@@ -82,12 +82,16 @@ const devServer = {
             res.json({ message: 'ok' });
           });
         } else {
-          res.status(404).json({ _error: 'User not found.' });  
+          res.status(404).json({ _error: 'User not found.' });
         }
       } else if (found) {
         res.status(500).json({ email: 'Email is already used.' });
       } else {
-        const newUser = Object.assign({}, req.body, { id: uuidv1(), tokens: [], confirmPassword: undefined });
+        const newUser = Object.assign(
+          {},
+          req.body,
+          { id: uuidv1(), tokens: [], confirmPassword: undefined },
+        );
         db.users.push(newUser);
         save2Json(db, () => {
           res.json({ message: 'ok' });

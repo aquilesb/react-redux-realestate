@@ -52,11 +52,14 @@ describe('Propertie actions', () => {
   });
 
   test('should not load featured properties', () => {
-    const error = 'test.body.error.message';
+    const error = {
+      name: 'ApiError',
+      status: 404,
+    };
     fetchMock.getOnce('/api/properties/featured', {
       status: 404,
       headers: { 'Content-Type': 'application/json' },
-      body: { error },
+      body: error,
     });
     const expectedActions = [
       { type: actions.PROPERTIES_GET_FEATURED_PROP },
@@ -64,7 +67,7 @@ describe('Propertie actions', () => {
         type: actions.PROPERTIES_GET_FEATURED_PROP_FAILURE,
         meta: {},
         error: true,
-        payload: { error },
+        payload: error,
       },
     ];
 
@@ -92,11 +95,14 @@ describe('Propertie actions', () => {
   });
 
   test('should not load recommended properties', () => {
-    const error = 'test.body.error.message';
+    const error = {
+      name: 'ApiError',
+      status: 404,
+    };
     fetchMock.getOnce('/api/properties/recommended', {
       status: 404,
       headers: { 'Content-Type': 'application/json' },
-      body: { error },
+      body: error,
     });
 
     const expectedActions = [
@@ -105,7 +111,7 @@ describe('Propertie actions', () => {
         type: actions.PROPERTIES_GET_RECOMMENDED_FAILURE,
         meta: {},
         error: true,
-        payload: { error },
+        payload: error,
       },
     ];
 
@@ -133,11 +139,14 @@ describe('Propertie actions', () => {
   });
 
   test('should not load hot properties', () => {
-    const error = 'test.body.error.message';
+    const error = {
+      name: 'ApiError',
+      status: 404,
+    };
     fetchMock.getOnce('/api/properties/hot', {
       status: 404,
       headers: { 'Content-Type': 'application/json' },
-      body: { error },
+      body: error,
     });
 
     const expectedActions = [
@@ -146,7 +155,7 @@ describe('Propertie actions', () => {
         type: actions.PROPERTIES_GET_HOT_FAILURE,
         meta: {},
         error: true,
-        payload: { error },
+        payload: error,
       },
     ];
 
@@ -239,11 +248,14 @@ describe('Propertie actions', () => {
       .set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
       .toJS();
 
-    const error = 'test.body.error.message';
+    const error = {
+      name: 'ApiError',
+      status: 404,
+    };
     fetchMock.getOnce(`/api/search/?${queryString.stringify(params)}`, {
       status: 404,
       headers: { 'Content-Type': 'application/json' },
-      body: { error },
+      body: error,
     });
 
     const expectedActions = [
@@ -252,7 +264,7 @@ describe('Propertie actions', () => {
         type: actions.PROPERTIES_SEARCH_FAILURE,
         meta: {},
         error: true,
-        payload: { error },
+        payload: error,
       },
     ];
 
@@ -306,11 +318,14 @@ describe('Propertie actions', () => {
       .set('index', 0)
       .set('sortBy', initialStateSearch.getIn(['search', 'sortBy']))
       .toJS();
-    const error = 'test.body.error.message';
+    const error = {
+      name: 'ApiError',
+      status: 404,
+    };
     fetchMock.getOnce(`/api/search/?${queryString.stringify(params)}`, {
       status: 404,
       headers: { 'Content-Type': 'application/json' },
-      body: { error },
+      body: error,
     });
 
     const expectedActions = [
@@ -321,7 +336,7 @@ describe('Propertie actions', () => {
         type: actions.PROPERTIES_SEARCH_FAILURE,
         meta: {},
         error: true,
-        payload: { error },
+        payload: error,
       },
     ];
 

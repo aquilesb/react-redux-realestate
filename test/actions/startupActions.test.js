@@ -22,10 +22,21 @@ describe('Startup Actions', () => {
   });
 
   test('should load all data', () => {
+    const newPropsPayload = {
+      status: 404,
+      headers: { 'Content-Type': 'application/json' },
+      body: {
+        status: 404,
+        name: 'ApiError',
+        message: 'An error has happened loading new properties. Try again.',
+      },
+    };
+
     fetchMock.getOnce('/api/agents/list', agentsList);
     fetchMock.getOnce('/api/properties/featured', featuredProperties);
     fetchMock.getOnce('/api/properties/recommended', featuredProperties);
     fetchMock.getOnce('/api/properties/hot', featuredProperties);
+    fetchMock.getOnce('/api/properties/new', newPropsPayload);
     fetchMock.getOnce('/api/prices/list', priceTypes);
 
     const expectedActions = [
@@ -33,6 +44,7 @@ describe('Startup Actions', () => {
       { type: propertieActions.PROPERTIES_GET_FEATURED_PROP },
       { type: propertieActions.PROPERTIES_GET_RECOMMENDED },
       { type: propertieActions.PROPERTIES_GET_HOT },
+      { type: propertieActions.PROPERTIES_GET_NEW },
       { type: searchActions.SEARCH_GET_PRICE_TYPE },
       { type: configActions.CONFIG_UPDATE_IS_PROD, isProd: process.env.NODE_ENV === 'production' },
       { type: agentsActions.AGENTS_GET_LIST_SUCCESS, meta: undefined, payload: fromJS(agentsList) },
@@ -50,6 +62,16 @@ describe('Startup Actions', () => {
         type: propertieActions.PROPERTIES_GET_HOT_SUCCESS,
         meta: undefined,
         payload: fromJS(featuredProperties).slice(0, 4),
+      },
+      {
+        payload: {
+          status: 404,
+          name: 'ApiError',
+          message: 'An error has happened loading new properties. Try again.',
+        },
+        type: 'PROPERTIES_GET_NEW_FAILURE',
+        meta: {},
+        error: true,
       },
       {
         type: searchActions.SEARCH_GET_PRICE_TYPE_SUCCESS,

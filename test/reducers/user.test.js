@@ -7,17 +7,18 @@ describe('user reducer', () => {
 
   beforeAll(() => {
     initialState = fromJS({
-      id: '',
+      id: null,
+      token: null,
       data: {},
     });
   });
 
 
-  test('should returns agents initial state', () => {
+  test('should returns user initial state', () => {
     expect(reducer(undefined, {})).toEqual(initialState);
   });
 
-  test('should returns agents list updated', () => {
+  test('should returns user data', () => {
     const data = { id: 'idTest', name: 'test' };
     const dispatchedAction = {
       type: action.USER_FETCH_DATA_SUCCESS,
