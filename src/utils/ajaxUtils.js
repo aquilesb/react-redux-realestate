@@ -41,10 +41,9 @@ export const ajaxFailure = (type, meta = {}) => ({
 export const ajaxFormFailure = (type, compProps) => ({
   type,
   meta: {},
-  payload: (_, state, response) => {
-    return response.json().then((json) => {
+  payload: (_, state, response) => response.json()
+    .then((json) => {
       compProps.stopSubmit(json);
       return null;
-    });
-  },
+    }),
 });

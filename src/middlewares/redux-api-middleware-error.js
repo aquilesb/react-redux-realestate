@@ -17,6 +17,7 @@ export default store => next => (action) => {
     } else if (action.payload.status === 404) {
       // store.dispatch(push('/404'))
       error(action.payload.message);
+      return next(action);
     }
   } else {
     // So the middleware doesn't get applied to every single action

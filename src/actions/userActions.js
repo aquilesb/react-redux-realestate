@@ -38,7 +38,7 @@ export const getUserData = storedID => (dispatch, state) => {
           payload: (_, reduxState, response) => response.json().then((json) => {
             setTimeout(() => {
               dispatch(push('/my-account'));
-            },500);
+            }, 500);
             return fromJS(json);
           }),
         },

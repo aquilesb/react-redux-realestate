@@ -7,7 +7,7 @@ const initialState = fromJS({
   data: {},
 });
 
-export default (state = initialState, {type, payload }) => {
+export default (state = initialState, { type, payload }) => {
   switch (type) {
     case ActionTypes.USER_FETCH_DATA_SUCCESS:
       return state.set('data', payload);

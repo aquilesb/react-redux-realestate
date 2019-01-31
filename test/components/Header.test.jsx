@@ -1,17 +1,25 @@
 import React from 'react';
-import Enzyme, { mount } from 'enzyme';
+import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { MemoryRouter } from 'react-router-dom';
+import { fromJS } from 'immutable';
+import configureMockStore from 'redux-mock-store';
 import Header from '../../src/components/Header';
+import shallowWithStore from '../helpers/shallowWithStore';
 
 Enzyme.configure({ adapter: new Adapter() });
+const mockStore = configureMockStore([]);
 
 describe('Header component', () => {
   let mountedComponent;
   let props;
+  let store;
   const getComponent = (isNew = false) => {
     if (!mountedComponent || isNew) {
-      mountedComponent = mount(<MemoryRouter><Header {...props} /></MemoryRouter>);
+      mountedComponent = shallowWithStore(
+        <MemoryRouter><Header {...props} /></MemoryRouter>,
+        store,
+      );
     }
     return mountedComponent;
   };
@@ -21,7 +29,11 @@ describe('Header component', () => {
       match: {
         url: '/',
       },
+      userData: fromJS({}),
+      onLogout: () => {},
     };
+    const state = fromJS({});
+    store = mockStore(state);
   });
 
   test('should load header element', () => {

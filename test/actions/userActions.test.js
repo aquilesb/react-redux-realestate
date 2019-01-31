@@ -41,11 +41,14 @@ describe('userActions actions', () => {
 
   test('should not load user details', () => {
     const userID = initialState.getIn(['user', 'id']);
-    const error = 'test.body.error.message';
+    const error = {
+      name: 'ApiError',
+      status: 404,
+    };
     fetchMock.getOnce(`/api/user/${userID}`, {
       status: 404,
       headers: { 'Content-Type': 'application/json' },
-      body: { error },
+      body: error,
     });
 
     const expectedActions = [
@@ -54,7 +57,7 @@ describe('userActions actions', () => {
         type: actions.USER_FETCH_DATA_FAILURE,
         error: true,
         meta: {},
-        payload: { error },
+        payload: error,
       },
     ];
 

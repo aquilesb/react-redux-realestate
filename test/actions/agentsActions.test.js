@@ -29,11 +29,14 @@ describe('AgentActions actions', () => {
   });
 
   test('should not load agents', () => {
-    const error = 'test.body.error.message';
+    const error = {
+      name: 'ApiError',
+      status: 404,
+    };
     fetchMock.getOnce('/api/agents/list', {
       status: 404,
       headers: { 'Content-Type': 'application/json' },
-      body: { error },
+      body: error,
     });
 
     const expectedActions = [
@@ -42,7 +45,7 @@ describe('AgentActions actions', () => {
         type: actions.AGENTS_GET_LIST_FAILURE,
         error: true,
         meta: {},
-        payload: { error },
+        payload: error,
       },
     ];
 

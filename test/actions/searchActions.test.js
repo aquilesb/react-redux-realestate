@@ -137,11 +137,14 @@ describe('SearchActions', () => {
   });
 
   test('should not load price types', () => {
-    const error = 'test.body.error.message';
+    const error = {
+      name: 'ApiError',
+      status: 404,
+    };
     fetchMock.getOnce('/api/prices/list', {
       status: 404,
       headers: { 'Content-Type': 'application/json' },
-      body: { error },
+      body: error,
     });
 
     const expectedActions = [
@@ -150,7 +153,7 @@ describe('SearchActions', () => {
         type: actions.SEARCH_GET_PRICE_TYPE_FAILURE,
         meta: {},
         error: true,
-        payload: { error },
+        payload: error,
       },
     ];
 
