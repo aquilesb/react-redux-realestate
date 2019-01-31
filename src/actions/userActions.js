@@ -21,6 +21,8 @@ export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 
 export const USER_LOGOUT = 'USER_LOGOUT';
 
+const { ACCESS_TOKEN_KEY, USER_ID_KEY } = process.env;
+
 /**
  * Load user data from backend
  * @param {string} storedID user ID stored on local storage
@@ -119,8 +121,8 @@ export const login = values => dispatch => fetchPolyfill('/api/login', getFetchO
     if (resp.status !== 200) {
       throw new SubmissionError(json);
     }
-    ls('accessToken', json.token);
-    ls('userID', json.id);
+    ls(ACCESS_TOKEN_KEY, json.token);
+    ls(USER_ID_KEY, json.id);
     dispatch(updateLoginModalIsOpen(false));
     dispatch({ type: USER_LOGIN_SUCCESS, payload: json });
     dispatch(getUserData());
@@ -134,7 +136,7 @@ export const logout = () => (dispatch, state) => {
   if (pathname === '/my-account' || pathname === '/my-properties') {
     dispatch(push('/'));
   }
-  ls.remove('accessToken');
-  ls.remove('userID');
+  ls.remove(ACCESS_TOKEN_KEY);
+  ls.remove(USER_ID_KEY);
   dispatch({ type: USER_LOGOUT });
 };

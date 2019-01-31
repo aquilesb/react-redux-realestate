@@ -1,5 +1,19 @@
 const webpack = require('webpack');
 const devServer = require('./server/devServer');
+const dotenv = require('dotenv');
+
+let env;
+const getEnv = () => {
+  if (!env) {
+    env = dotenv.config({ path: `${process.cwd()}/config/dev.env`}).parsed;
+  }
+  return env;
+};
+  
+const envKeys = Object.keys(getEnv()).reduce((prev, next) => {
+  prev[`${next}`] = JSON.stringify(getEnv()[next]);
+  return prev;
+}, {'NODE_ENV': JSON.stringify('development')});
 
 module.exports = {
   mode: 'development',
@@ -40,6 +54,9 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': envKeys
+    }),
   ],
   devServer,
 };

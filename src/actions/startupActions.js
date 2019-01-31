@@ -6,10 +6,10 @@ import { hideSpinner } from './layoutActions';
 import { updateIsProd } from './configActions';
 import { getPriceTypes } from './searchActions';
 
+const { ACCESS_TOKEN_KEY, USER_ID_KEY } = process.env;
 const loadInitialData = () => (dispatch) => {
-
-  const token = ls('accessToken');
-  const userID = ls('userID');
+  const token = ls(ACCESS_TOKEN_KEY);
+  const userID = ls(USER_ID_KEY);
 
   const promises = [
     dispatch(getAgents()),
