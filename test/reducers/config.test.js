@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import reducer from '../../src/reducers/config';
-import * as action from '../../src/actions/configActions';
+import * as action from '../../src/actions/actionTypes';
 
 describe('config reducer', () => {
   test('shoul returns config initial state', () => {

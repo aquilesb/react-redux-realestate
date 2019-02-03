@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import reducer from '../../src/reducers/properties';
-import * as action from '../../src/actions/propertieActions';
+import * as action from '../../src/actions/actionTypes';
 
 describe('property reducer', () => {
   let initialState;

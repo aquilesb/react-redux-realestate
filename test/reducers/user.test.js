@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import reducer from '../../src/reducers/user';
-import * as action from '../../src/actions/userActions';
+import * as action from '../../src/actions/actionTypes';
 
 describe('user reducer', () => {
   let initialState;

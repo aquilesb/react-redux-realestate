@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import * as Actions from '../actions/configActions';
+import * as Actions from '../actions/actionTypes';
 
 const initialState = fromJS({
   isProd: false,

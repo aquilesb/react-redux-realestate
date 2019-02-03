@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import reducer from '../../src/reducers/agents';
-import * as action from '../../src/actions/agentsActions';
+import * as action from '../../src/actions/actionTypes';
 
 describe('agents reducer', () => {
   test('should returns agents initial state', () => {

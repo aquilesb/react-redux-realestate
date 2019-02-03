@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import { apiMiddleware } from 'redux-api-middleware';
 import fetchMock from 'fetch-mock';
 import * as actions from '../../src/actions/userActions';
+import * as types from '../../src/actions/actionTypes';
 import userDetail from '../mockData/userDetail.json';
 
 const mockStore = configureMockStore([thunk, apiMiddleware]);
@@ -29,8 +30,8 @@ describe('userActions actions', () => {
     fetchMock.getOnce(`/api/user/${userID}`, userDetail);
 
     const expectedActions = [
-      { type: actions.USER_FETCH_DATA },
-      { type: actions.USER_FETCH_DATA_SUCCESS, payload: fromJS(userDetail) },
+      { type: types.USER_FETCH_DATA },
+      { type: types.USER_FETCH_DATA_SUCCESS, payload: fromJS(userDetail) },
     ];
 
     const store = mockStore(initialState);
@@ -52,9 +53,9 @@ describe('userActions actions', () => {
     });
 
     const expectedActions = [
-      { type: actions.USER_FETCH_DATA },
+      { type: types.USER_FETCH_DATA },
       {
-        type: actions.USER_FETCH_DATA_FAILURE,
+        type: types.USER_FETCH_DATA_FAILURE,
         error: true,
         meta: {},
         payload: error,

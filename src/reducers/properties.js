@@ -1,5 +1,5 @@
 import { fromJS, List } from 'immutable';
-import * as Actions from '../actions/propertieActions';
+import * as Actions from '../actions/actionTypes';
 
 const initialState = fromJS({
   featured: [],

@@ -5,7 +5,7 @@ import { apiMiddleware } from 'redux-api-middleware';
 import fetchMock from 'fetch-mock';
 import queryString from 'query-string';
 import * as actions from '../../src/actions/propertieActions';
-import * as searchActions from '../../src/actions/searchActions';
+import * as types from '../../src/actions/actionTypes';
 import featuredProperties from '../mockData/featuredProperties.json';
 
 const mockStore = configureMockStore([thunk, apiMiddleware]);
@@ -39,9 +39,9 @@ describe('Propertie actions', () => {
     fetchMock.getOnce('/api/properties/featured', featuredProperties);
 
     const expectedActions = [
-      { type: actions.PROPERTIES_GET_FEATURED_PROP },
+      { type: types.PROPERTIES_GET_FEATURED_PROP },
       {
-        type: actions.PROPERTIES_GET_FEATURED_PROP_SUCCESS, payload: fromJS(featuredProperties),
+        type: types.PROPERTIES_GET_FEATURED_PROP_SUCCESS, payload: fromJS(featuredProperties),
       },
     ];
 
@@ -62,9 +62,9 @@ describe('Propertie actions', () => {
       body: error,
     });
     const expectedActions = [
-      { type: actions.PROPERTIES_GET_FEATURED_PROP },
+      { type: types.PROPERTIES_GET_FEATURED_PROP },
       {
-        type: actions.PROPERTIES_GET_FEATURED_PROP_FAILURE,
+        type: types.PROPERTIES_GET_FEATURED_PROP_FAILURE,
         meta: {},
         error: true,
         payload: error,
@@ -81,9 +81,9 @@ describe('Propertie actions', () => {
     fetchMock.getOnce('/api/properties/recommended', featuredProperties);
 
     const expectedActions = [
-      { type: actions.PROPERTIES_GET_RECOMMENDED },
+      { type: types.PROPERTIES_GET_RECOMMENDED },
       {
-        type: actions.PROPERTIES_GET_RECOMMENDED_SUCCESS,
+        type: types.PROPERTIES_GET_RECOMMENDED_SUCCESS,
         payload: fromJS(featuredProperties).slice(0, 4),
       },
     ];
@@ -106,9 +106,9 @@ describe('Propertie actions', () => {
     });
 
     const expectedActions = [
-      { type: actions.PROPERTIES_GET_RECOMMENDED },
+      { type: types.PROPERTIES_GET_RECOMMENDED },
       {
-        type: actions.PROPERTIES_GET_RECOMMENDED_FAILURE,
+        type: types.PROPERTIES_GET_RECOMMENDED_FAILURE,
         meta: {},
         error: true,
         payload: error,
@@ -125,9 +125,9 @@ describe('Propertie actions', () => {
     fetchMock.getOnce('/api/properties/hot', featuredProperties);
 
     const expectedActions = [
-      { type: actions.PROPERTIES_GET_HOT },
+      { type: types.PROPERTIES_GET_HOT },
       {
-        type: actions.PROPERTIES_GET_HOT_SUCCESS,
+        type: types.PROPERTIES_GET_HOT_SUCCESS,
         payload: fromJS(featuredProperties).slice(0, 4),
       },
     ];
@@ -150,9 +150,9 @@ describe('Propertie actions', () => {
     });
 
     const expectedActions = [
-      { type: actions.PROPERTIES_GET_HOT },
+      { type: types.PROPERTIES_GET_HOT },
       {
-        type: actions.PROPERTIES_GET_HOT_FAILURE,
+        type: types.PROPERTIES_GET_HOT_FAILURE,
         meta: {},
         error: true,
         payload: error,
@@ -178,9 +178,9 @@ describe('Propertie actions', () => {
     const state = initialStateSearch.setIn(['router', 'location', 'pathname'], '/');
 
     const expectedActions = [
-      { type: actions.PROPERTIES_SEARCH },
+      { type: types.PROPERTIES_SEARCH },
       {
-        type: searchActions.SEARCH_CHANGE_PARAMS,
+        type: types.SEARCH_CHANGE_PARAMS,
         timesSearched: 4,
         totalLoaded: 40,
         totalResults: 102,
@@ -195,7 +195,7 @@ describe('Propertie actions', () => {
         },
       },
       {
-        type: actions.PROPERTIES_SEARCH_SUCCESS,
+        type: types.PROPERTIES_SEARCH_SUCCESS,
         meta: undefined,
         payload: fromJS(featuredProperties),
       },
@@ -220,15 +220,15 @@ describe('Propertie actions', () => {
     );
 
     const expectedActions = [
-      { type: actions.PROPERTIES_SEARCH },
+      { type: types.PROPERTIES_SEARCH },
       {
-        type: searchActions.SEARCH_CHANGE_PARAMS,
+        type: types.SEARCH_CHANGE_PARAMS,
         timesSearched: 4,
         totalLoaded: 40,
         totalResults: 102,
       },
       {
-        type: actions.PROPERTIES_SEARCH_SUCCESS,
+        type: types.PROPERTIES_SEARCH_SUCCESS,
         meta: undefined,
         payload: fromJS(featuredProperties),
       },
@@ -259,9 +259,9 @@ describe('Propertie actions', () => {
     });
 
     const expectedActions = [
-      { type: actions.PROPERTIES_SEARCH },
+      { type: types.PROPERTIES_SEARCH },
       {
-        type: actions.PROPERTIES_SEARCH_FAILURE,
+        type: types.PROPERTIES_SEARCH_FAILURE,
         meta: {},
         error: true,
         payload: error,
@@ -289,17 +289,17 @@ describe('Propertie actions', () => {
     };
 
     const expectedActions = [
-      { type: actions.PROPERTIES_RESET_SEARCH },
-      { type: searchActions.SEARCH_RESET_PARAMS },
-      { type: actions.PROPERTIES_SEARCH },
+      { type: types.PROPERTIES_RESET_SEARCH },
+      { type: types.SEARCH_RESET_PARAMS },
+      { type: types.PROPERTIES_SEARCH },
       {
-        type: searchActions.SEARCH_CHANGE_PARAMS,
+        type: types.SEARCH_CHANGE_PARAMS,
         timesSearched: 4,
         totalLoaded: 40,
         totalResults: 102,
       },
       {
-        type: actions.PROPERTIES_SEARCH_SUCCESS,
+        type: types.PROPERTIES_SEARCH_SUCCESS,
         meta: undefined,
         payload: fromJS(featuredProperties),
       },
@@ -329,11 +329,11 @@ describe('Propertie actions', () => {
     });
 
     const expectedActions = [
-      { type: actions.PROPERTIES_RESET_SEARCH },
-      { type: searchActions.SEARCH_RESET_PARAMS },
-      { type: actions.PROPERTIES_SEARCH },
+      { type: types.PROPERTIES_RESET_SEARCH },
+      { type: types.SEARCH_RESET_PARAMS },
+      { type: types.PROPERTIES_SEARCH },
       {
-        type: actions.PROPERTIES_SEARCH_FAILURE,
+        type: types.PROPERTIES_SEARCH_FAILURE,
         meta: {},
         error: true,
         payload: error,

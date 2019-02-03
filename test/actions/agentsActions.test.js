@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import { apiMiddleware } from 'redux-api-middleware';
 import fetchMock from 'fetch-mock';
 import * as actions from '../../src/actions/agentsActions';
+import * as types from '../../src/actions/actionTypes';
 import agentsList from '../mockData/agents.json';
 
 const mockStore = configureMockStore([thunk, apiMiddleware]);
@@ -18,8 +19,8 @@ describe('AgentActions actions', () => {
     fetchMock.getOnce('/api/agents/list', agentsList);
 
     const expectedActions = [
-      { type: actions.AGENTS_GET_LIST },
-      { type: actions.AGENTS_GET_LIST_SUCCESS, payload: fromJS(agentsList) },
+      { type: types.AGENTS_GET_LIST },
+      { type: types.AGENTS_GET_LIST_SUCCESS, payload: fromJS(agentsList) },
     ];
 
     const store = mockStore({});
@@ -40,9 +41,9 @@ describe('AgentActions actions', () => {
     });
 
     const expectedActions = [
-      { type: actions.AGENTS_GET_LIST },
+      { type: types.AGENTS_GET_LIST },
       {
-        type: actions.AGENTS_GET_LIST_FAILURE,
+        type: types.AGENTS_GET_LIST_FAILURE,
         error: true,
         meta: {},
         payload: error,

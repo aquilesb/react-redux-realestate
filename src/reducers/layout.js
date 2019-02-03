@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import * as Actions from '../actions/layoutActions';
+import * as Actions from '../actions/actionTypes';
 
 const initialState = fromJS({
   layoutLoaded: false,
