@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import * as ActionTypes from '../actions/searchActions';
+import * as ActionTypes from '../actions/actionTypes';
 
 const initialState = fromJS({
   fields: {

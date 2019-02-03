@@ -1,7 +1,8 @@
-export const LAYOUT_SHOW_SPINNER = 'LAYOUT_SHOW_SPINNER';
-export const LAYOUT_HIDE_SPINNER = 'LAYOUT_HIDE_SPINNER';
-export const LAYOUT_LOGIN_MODAL_UPDATE = 'LAYOUT_LOGIN_MODAL_UPDATE';
-
+import {
+  LAYOUT_SHOW_SPINNER,
+  LAYOUT_HIDE_SPINNER,
+  LAYOUT_LOGIN_MODAL_UPDATE,
+} from './actionTypes';
 
 export const showSpinner = () => ({ type: LAYOUT_SHOW_SPINNER });
 

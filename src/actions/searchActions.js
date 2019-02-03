@@ -2,15 +2,15 @@ import { CALL_API } from 'redux-api-middleware';
 import { fromJS } from 'immutable';
 import { ajaxFailure } from '../utils/ajaxUtils';
 import { onSearchProperty } from './propertieActions';
-
-export const SEARCH_CHANGE_FIELD = 'SEARCH_CHANGE_FIELD';
-export const SEARCH_CHANGE_SORT_BY = 'SEARCH_CHANGE_SORT_BY';
-export const SEARCH_CHANGE_PARAMS = 'SEARCH_CHANGE_PARAMS';
-export const SEARCH_RESET_PARAMS = 'SEARCH_RESET_PARAMS';
-
-export const SEARCH_GET_PRICE_TYPE = 'SEARCH_GET_PRICE_TYPE';
-export const SEARCH_GET_PRICE_TYPE_SUCCESS = 'SEARCH_GET_PRICE_TYPE_SUCCESS';
-export const SEARCH_GET_PRICE_TYPE_FAILURE = 'SEARCH_GET_PRICE_TYPE_FAILURE';
+import {
+  SEARCH_CHANGE_FIELD,
+  SEARCH_CHANGE_SORT_BY,
+  SEARCH_CHANGE_PARAMS,
+  SEARCH_RESET_PARAMS,
+  SEARCH_GET_PRICE_TYPE,
+  SEARCH_GET_PRICE_TYPE_SUCCESS,
+  SEARCH_GET_PRICE_TYPE_FAILURE,
+} from './actionTypes';
 
 export const changeSortBy = event => (dispatch) => {
   dispatch({ type: SEARCH_CHANGE_SORT_BY, sortBy: event.target.value });

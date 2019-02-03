@@ -1,10 +1,11 @@
 import { CALL_API } from 'redux-api-middleware';
 import { fromJS } from 'immutable';
 import { ajaxFailure } from '../utils/ajaxUtils';
-
-export const AGENTS_GET_LIST = 'AGENTS_GET_LIST';
-export const AGENTS_GET_LIST_SUCCESS = 'AGENTS_GET_LIST_SUCCESS';
-export const AGENTS_GET_LIST_FAILURE = 'AGENTS_GET_LIST_FAILURE';
+import {
+  AGENTS_GET_LIST,
+  AGENTS_GET_LIST_SUCCESS,
+  AGENTS_GET_LIST_FAILURE,
+} from './actionTypes';
 
 export const getAgents = () => ({
   [CALL_API]: {
@@ -20,3 +21,5 @@ export const getAgents = () => ({
     method: 'GET',
   },
 });
+
+export default getAgents;

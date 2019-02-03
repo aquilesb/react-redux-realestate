@@ -7,19 +7,17 @@ import ls from 'local-storage';
 import { ajaxFailure, ajaxFormFailure, getFetchOptions } from '../utils/ajaxUtils';
 import { success } from '../utils/toastUtils';
 import { updateLoginModalIsOpen } from './layoutActions';
+import {
+  USER_FETCH_DATA,
+  USER_FETCH_DATA_SUCCESS,
+  USER_FETCH_DATA_FAILURE,
+  USER_REGISTER,
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAILURE,
+  USER_LOGIN_SUCCESS,
+  USER_LOGOUT,
+} from './actionTypes';
 
-export const USER_UPDATE_DATA = 'USER_UPDATE_DATA';
-export const USER_FETCH_DATA = 'USER_FETCH_DATA';
-export const USER_FETCH_DATA_SUCCESS = 'USER_FETCH_DATA_SUCCESS';
-export const USER_FETCH_DATA_FAILURE = 'USER_FETCH_DATA_FAILURE';
-
-export const USER_REGISTER = 'USER_REGISTER';
-export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS';
-export const USER_REGISTER_FAILURE = 'USER_REGISTER_FAILURE';
-
-export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
-
-export const USER_LOGOUT = 'USER_LOGOUT';
 
 const { ACCESS_TOKEN_KEY, USER_ID_KEY } = process.env;
 
