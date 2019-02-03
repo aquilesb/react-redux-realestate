@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import reducer from '../../src/reducers/search';
-import * as action from '../../src/actions/searchActions';
+import * as action from '../../src/actions/actionTypes';
 
 describe('search reducer', () => {
   let state;

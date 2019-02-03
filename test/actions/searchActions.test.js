@@ -5,7 +5,7 @@ import fetchMock from 'fetch-mock';
 import queryString from 'query-string';
 import { apiMiddleware } from 'redux-api-middleware';
 import * as actions from '../../src/actions/searchActions';
-import * as propertyActions from '../../src/actions/propertieActions';
+import * as types from '../../src/actions/actionTypes';
 import featuredProperties from '../mockData/featuredProperties.json';
 import priceType from '../mockData/priceType.json';
 
@@ -41,18 +41,18 @@ describe('SearchActions', () => {
       .toJS();
     fetchMock.getOnce(`/api/search/?${queryString.stringify(params)}`, { data: featuredProperties, total: 102 });
     const expectedActions = [
-      { type: actions.SEARCH_CHANGE_SORT_BY, sortBy: 2 },
-      { type: propertyActions.PROPERTIES_RESET_SEARCH },
-      { type: actions.SEARCH_RESET_PARAMS },
-      { type: propertyActions.PROPERTIES_SEARCH },
+      { type: types.SEARCH_CHANGE_SORT_BY, sortBy: 2 },
+      { type: types.PROPERTIES_RESET_SEARCH },
+      { type: types.SEARCH_RESET_PARAMS },
+      { type: types.PROPERTIES_SEARCH },
       {
-        type: actions.SEARCH_CHANGE_PARAMS,
+        type: types.SEARCH_CHANGE_PARAMS,
         timesSearched: 4,
         totalLoaded: 40,
         totalResults: 102,
       },
       {
-        type: propertyActions.PROPERTIES_SEARCH_SUCCESS,
+        type: types.PROPERTIES_SEARCH_SUCCESS,
         meta: undefined,
         payload: fromJS(featuredProperties),
       },
@@ -78,7 +78,7 @@ describe('SearchActions', () => {
 
     const expectedActions = [
       {
-        type: actions.SEARCH_CHANGE_PARAMS,
+        type: types.SEARCH_CHANGE_PARAMS,
         timesSearched: 3,
         totalLoaded: 30,
         totalResults: 40,
@@ -101,7 +101,7 @@ describe('SearchActions', () => {
 
     const expectedActions = [
       {
-        type: actions.SEARCH_CHANGE_PARAMS,
+        type: types.SEARCH_CHANGE_PARAMS,
         timesSearched: 3,
         totalLoaded: 15,
         totalResults: 15,
@@ -115,19 +115,19 @@ describe('SearchActions', () => {
   });
 
   test('should reset search parameters', () => {
-    expect(actions.resetSearchParams()).toEqual({ type: actions.SEARCH_RESET_PARAMS });
+    expect(actions.resetSearchParams()).toEqual({ type: types.SEARCH_RESET_PARAMS });
   });
 
   test('should change search field value', () => {
-    expect(actions.changeSearchField('type', 3)).toEqual({ type: actions.SEARCH_CHANGE_FIELD, field: 'type', value: 3 });
+    expect(actions.changeSearchField('type', 3)).toEqual({ type: types.SEARCH_CHANGE_FIELD, field: 'type', value: 3 });
   });
 
   test('should load price types', () => {
     fetchMock.getOnce('/api/prices/list', priceType);
 
     const expectedActions = [
-      { type: actions.SEARCH_GET_PRICE_TYPE },
-      { type: actions.SEARCH_GET_PRICE_TYPE_SUCCESS, payload: fromJS(priceType) },
+      { type: types.SEARCH_GET_PRICE_TYPE },
+      { type: types.SEARCH_GET_PRICE_TYPE_SUCCESS, payload: fromJS(priceType) },
     ];
 
     const store = mockStore({});
@@ -148,9 +148,9 @@ describe('SearchActions', () => {
     });
 
     const expectedActions = [
-      { type: actions.SEARCH_GET_PRICE_TYPE },
+      { type: types.SEARCH_GET_PRICE_TYPE },
       {
-        type: actions.SEARCH_GET_PRICE_TYPE_FAILURE,
+        type: types.SEARCH_GET_PRICE_TYPE_FAILURE,
         meta: {},
         error: true,
         payload: error,

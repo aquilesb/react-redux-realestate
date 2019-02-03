@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import reducer from '../../src/reducers/layout';
-import * as action from '../../src/actions/layoutActions';
+import * as action from '../../src/actions/actionTypes';
 
 describe('layout reducer', () => {
   let initialState;
