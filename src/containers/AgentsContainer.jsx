@@ -1,31 +1,37 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { PropTypes } from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import InsideBanner from '../components/InsideBanner';
 import AgentListItem from '../components/AgentListItem';
 
-class AgentsContainer extends PureComponent {
-  render() {
-    const { agentsList } = this.props;
-    if (!agentsList) {
-      return null;
-    }
-
-    return (
-      <main className="agents">
-        <InsideBanner title="Agents" />
-        <section className="container">
-          <div className="spacer agents">
-            {agentsList.map(agent =>
-              <AgentListItem key={agent.get('id')} agent={agent} />)
-            }
-          </div>
-        </section>
-      </main>
-    );
+const AgentsContainer = ({ agentsList }) => {
+  if (!agentsList) {
+    return null;
   }
-}
+
+  return (
+    <main className="agents">
+      <InsideBanner title="Agents" />
+      <section className="container">
+        <div className="spacer agents">
+          {agentsList.map(agent =>
+            (<AgentListItem
+              key={agent.get('id')}
+              name={agent.get('name')}
+              email={agent.get('email')}
+              image={agent.get('image')}
+              showEmail={agent.get('showEmail')}
+              phone={agent.get('phone')}
+              showPhone={agent.get('showPhone')}
+              description={agent.get('description')}
+            />))
+          }
+        </div>
+      </section>
+    </main>
+  );
+};
 
 AgentsContainer.propTypes = {
   agentsList: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
