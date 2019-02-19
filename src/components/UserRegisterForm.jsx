@@ -1,5 +1,6 @@
 import React from 'react';
 import Promise from 'promise-polyfill';
+import { Map } from 'immutable';
 import { PropTypes } from 'prop-types';
 import { Field, reduxForm } from 'redux-form/immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
@@ -124,10 +125,14 @@ UserRegisterForm.propTypes = {
   onValidate: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   initialValues: ImmutablePropTypes.contains({
-    name: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    address: PropTypes.string.isRequired,
-  }).isRequired,
+    name: PropTypes.string,
+    email: PropTypes.string,
+    address: PropTypes.string,
+  }),
+};
+
+UserRegisterForm.defaultProps = {
+  initialValues: Map({}),
 };
 
 export default reduxForm({

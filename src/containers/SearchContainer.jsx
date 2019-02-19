@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
@@ -11,80 +11,79 @@ import { changeSearchField, changeSortBy } from '../actions/searchActions';
 import { onSearchProperty, doInifiteSearch } from '../actions/propertieActions';
 
 
-class SearchContainer extends PureComponent {
-  render() {
-    const {
-      searched,
-      searchType,
-      priceTypes,
-      searchPrice,
-      searchProperty,
-      hotProps,
-      sortBy,
-      totalResults,
-      hasMore2Load,
-    } = this.props;
+const SearchContainer = ({
+  searched,
+  searchType,
+  priceTypes,
+  searchPrice,
+  searchProperty,
+  hotProps,
+  sortBy,
+  totalResults,
+  hasMore2Load,
+  changeSearchFieldAction,
+  onSearchPropertyAction,
+  changeSortByAction,
+  doInifiteSearchAction,
+}) => {
+  const priceListItem = priceTypes.find(item => item.get('type') === searchType);
+  const loader = <div className="loader" key={0}>Loading ...</div>;
 
-    const priceListItem = priceTypes.find(item => item.get('type') === searchType);
-
-    const loader = <div className="loader" key={0}>Loading ...</div>;
-
-    return (
-      <main className="search" >
-        <InsideBanner title="Search" />
-        <section className="container">
-          <div className="properties-listing spacer">
-            <div className="row">
-              <div className="col-lg-3 col-sm-4 ">
-                <SideSearchForm
-                  priceListItem={priceListItem}
-                  searchPrice={searchPrice}
-                  searchType={searchType}
-                  searchProperty={searchProperty}
-                  onSearchProperty={this.props.onSearchProperty}
-                  changeSearchField={this.props.changeSearchField}
-                />
-                <div className="hot-properties hidden-xs">
-                  <h4>Hot Properties</h4>
-                  { hotProps.size > 0 && hotProps.map(item => <PropertyHot item={item} key={item.get('id')} />)}
+  return (
+    <main className="search" >
+      <InsideBanner title="Search" />
+      <section className="container">
+        <div className="properties-listing spacer">
+          <div className="row">
+            <div className="col-lg-3 col-sm-4 ">
+              <SideSearchForm
+                priceListItem={priceListItem}
+                searchPrice={searchPrice}
+                searchType={searchType}
+                searchProperty={searchProperty}
+                onSearchProperty={onSearchPropertyAction}
+                changeSearchField={changeSearchFieldAction}
+              />
+              <div className="hot-properties hidden-xs">
+                <h4>Hot Properties</h4>
+                { hotProps.size > 0 && hotProps.map(item => <PropertyHot item={item} key={item.get('id')} />)}
+              </div>
+            </div>
+            <div className="col-lg-9 col-sm-8">
+              <div className="sortby-wrapper">
+                <div className="align-left result">Showing: {searched.size} of {totalResults} </div>
+                <div className="align-right">
+                  <h6>Sort by:</h6>
+                  <select className="form-control" value={sortBy} onChange={changeSortByAction}>
+                    <option value="1">Price: Low to High</option>
+                    <option value="2">Price: High to Low</option>
+                  </select>
                 </div>
               </div>
-              <div className="col-lg-9 col-sm-8">
-                <div className="sortby-wrapper">
-                  <div className="align-left result">Showing: {searched.size} of {totalResults} </div>
-                  <div className="align-right">
-                    <h6>Sort by:</h6>
-                    <select className="form-control" value={sortBy} onChange={this.props.changeSortBy}>
-                      <option value="1">Price: Low to High</option>
-                      <option value="2">Price: High to Low</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="row search-result">
-                  <InfiniteScroll
-                    id="infinite-scroll"
-                    pageStart={0}
-                    loadMore={this.props.doInifiteSearch}
-                    hasMore={hasMore2Load}
-                    loader={loader}
-                  >
-                    { !!searched > 0 && searched.map((item, index) =>
-                    /* TODO remove time when create backend unique IDs */
-                      (
-                        <div className="col-lg-4 col-sm-6" key={`container-${item.get('id')}-${index}`}>
-                          <PropertyListItem item={item} key={item.get('id')} />
-                        </div>
-                      )) }
-                  </InfiniteScroll>
-                </div>
+              <div className="row search-result">
+                <InfiniteScroll
+                  id="infinite-scroll"
+                  pageStart={0}
+                  loadMore={doInifiteSearchAction}
+                  hasMore={hasMore2Load}
+                  loader={loader}
+                >
+                  { !!searched > 0 && searched.map((item, index) =>
+                  /* TODO remove time when create backend unique IDs */
+                    (
+                      <div className="col-lg-4 col-sm-6" key={`container-${item.get('id')}-${index}`}>
+                        <PropertyListItem item={item} key={item.get('id')} />
+                      </div>
+                    )) }
+                </InfiniteScroll>
               </div>
             </div>
           </div>
-        </section>
-      </main >
-    );
-  }
-}
+        </div>
+      </section>
+    </main >
+  );
+};
 
 SearchContainer.propTypes = {
   searched: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
@@ -117,10 +116,10 @@ SearchContainer.propTypes = {
   sortBy: PropTypes.number.isRequired,
   hasMore2Load: PropTypes.bool.isRequired,
   totalResults: PropTypes.number.isRequired,
-  changeSearchField: PropTypes.func.isRequired,
-  onSearchProperty: PropTypes.func.isRequired,
-  changeSortBy: PropTypes.func.isRequired,
-  doInifiteSearch: PropTypes.func.isRequired,
+  changeSearchFieldAction: PropTypes.func.isRequired,
+  onSearchPropertyAction: PropTypes.func.isRequired,
+  changeSortByAction: PropTypes.func.isRequired,
+  doInifiteSearchAction: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -152,10 +151,10 @@ const mapStateToProps = (state) => {
 };
 
 const functions = {
-  changeSearchField,
-  onSearchProperty,
-  changeSortBy,
-  doInifiteSearch,
+  changeSearchFieldAction: changeSearchField,
+  onSearchPropertyAction: onSearchProperty,
+  changeSortByAction: changeSortBy,
+  doInifiteSearchAction: doInifiteSearch,
 };
 
 export default connect(mapStateToProps, functions)(SearchContainer);

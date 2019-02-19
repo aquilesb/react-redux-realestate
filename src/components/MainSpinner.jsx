@@ -1,16 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class MainSpinner extends Component {
-  render() {
-    return (
-      <div className="main-spinner-wrapper">
-        <div className="spinner" >
-          <div className="double-bounce1" />
-          <div className="double-bounce2" />
-        </div>
-      </div>
-    );
-  }
-}
+const MainSpinner = () => (
+  <div className="main-spinner-wrapper">
+    <div className="spinner" >
+      <div className="double-bounce1" />
+      <div className="double-bounce2" />
+    </div>
+  </div>
+);
 
 export default MainSpinner;

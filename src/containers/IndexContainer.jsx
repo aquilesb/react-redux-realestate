@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter, Route } from 'react-router';
@@ -28,12 +28,14 @@ const content = (userData, logoutAction) => (
     />
   </div>);
 
-class IndexContainer extends PureComponent {
-  render() {
-    const { layoutLoaded, userData, logoutAction } = this.props;
-    return layoutLoaded ? content(userData, logoutAction) : <MainSpinner />;
-  }
-}
+const IndexContainer = ({
+  layoutLoaded,
+  userData,
+  logoutAction,
+}) => (layoutLoaded ?
+  content(userData, logoutAction) :
+  <MainSpinner />
+);
 
 IndexContainer.propTypes = {
   layoutLoaded: PropTypes.bool.isRequired,

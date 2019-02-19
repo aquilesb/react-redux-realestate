@@ -1,25 +1,20 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { PropTypes } from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Link } from 'react-router-dom';
 import { format2Money } from '../utils/formatUtils';
 
-class PropertyHot extends PureComponent {
-  render() {
-    const { item } = this.props;
-    return (
-      <div className="row">
-        <div className="col-lg-4 col-sm-5">
-          <img src={item.getIn(['images', 0])} className="img-responsive img-circle" alt="properties" />
-        </div>
-        <div className="col-lg-8 col-sm-7">
-          <h5><Link className="link-name" to={`/property/${item.get('encodedUrl')}`}>{item.get('name')}</Link></h5>
-          <p className="price">${format2Money(item.get('price'))}</p>
-        </div>
-      </div>
-    );
-  }
-}
+const PropertyHot = ({ item }) => (
+  <div className="row">
+    <div className="col-lg-4 col-sm-5">
+      <img src={item.getIn(['images', 0])} className="img-responsive img-circle" alt="properties" />
+    </div>
+    <div className="col-lg-8 col-sm-7">
+      <h5><Link className="link-name" to={`/property/${item.get('encodedUrl')}`}>{item.get('name')}</Link></h5>
+      <p className="price">${format2Money(item.get('price'))}</p>
+    </div>
+  </div>
+);
 
 PropertyHot.propTypes = {
   item: ImmutablePropTypes.contains({
