@@ -19,15 +19,13 @@ describe('AgentListItem component', () => {
 
   beforeAll(() => {
     props = {
-      agent: fromJS({
-        id: 2,
-        name: 'test name',
-        email: 'test@gmail.com',
-        showEmail: true,
-        phone: '+610426541236',
-        showPhone: true,
-        description: 'This is the descripition',
-      }),
+      name: 'test name',
+      image: '//my.domain.com/static/images/random-image.jpg',
+      email: 'test@gmail.com',
+      showEmail: true,
+      phone: '+610426541236',
+      showPhone: true,
+      description: 'This is the descripition',
     };
   });
 
@@ -70,7 +68,11 @@ describe('AgentListItem component', () => {
 
   describe('when showEmail and showPhone are false', () => {
     beforeAll(() => {
-      props.agent = props.agent.set('showEmail', false).set('showPhone', false);
+      props = {
+        ...props,
+        showEmail: false,
+        showPhone: false,
+      };
     });
 
     test('should not show envelope icon when showEmail props is false', () => {
