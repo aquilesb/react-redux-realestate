@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 const devServer = require('./server/devServer');
 const dotenv = require('dotenv');
 
@@ -53,6 +54,11 @@ module.exports = {
     filename: 'bundle.js',
   },
   plugins: [
+    new CopyPlugin([
+      {from: 'public/fonts/', to: 'fonts'},
+      {from: 'public/images/', to: 'images'},
+      {from: 'public/index.html', to: 'index.html'}
+    ]),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env': envKeys
