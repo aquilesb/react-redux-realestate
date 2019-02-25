@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express'); // eslint-disable-line
 
 const CWD = process.cwd();
 const app = express();
