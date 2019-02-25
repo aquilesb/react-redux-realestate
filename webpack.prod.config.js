@@ -5,7 +5,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
+const CopyPlugin = require('copy-webpack-plugin');
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
+
 const dotenv = require('dotenv');
 
 let env;
@@ -19,7 +21,7 @@ const getEnv = () => {
 const envKeys = Object.keys(getEnv()).reduce((prev, next) => {
   prev[`${next}`] = JSON.stringify(getEnv()[next]);
   return prev;
-}, {'NODE_ENV': JSON.stringify('production')});
+}, {'NODE_ENV': 'production'});
 
 
 module.exports = {
@@ -30,7 +32,7 @@ module.exports = {
   output: {
     path: __dirname + '/dist',
     publicPath: '/',
-    filename: '[name].[hash].bundle.js',
+    filename: '[name].[hash].js',
   },
   devtool: "none",
   module: {
@@ -98,12 +100,24 @@ module.exports = {
   new webpack.DefinePlugin({
     'process.env': envKeys
   }),
+  new CopyPlugin([
+    {from: 'public/fonts/', to: 'fonts'},
+    {from: 'public/images/', to: 'images'}
+  ]),
   new HtmlWebpackPlugin({
-    inject: false,
-    hash: true,
-    template: './public/test.html',
-    filename: 'test.html'
+    title: 'React Redux Real Estate',
+    meta: { viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
+    base: "https://example.com/path/"
   }),
-  new WebpackMd5Hash()
+  new HtmlWebpackIncludeAssetsPlugin({
+    assets: [{ path: 'js', glob: '*.js' }],
+    assets: [{ path: 'css', glob: '*.css' }],
+    append: false,
+    hash: function(assetName, hash) {
+      assetName = assetName.replace(/\.js$/, '.' + hash + '.js');
+      assetName = assetName.replace(/\.css$/, '.' + hash + '.css');
+      return assetName;
+    }
+  })
   ]
 };

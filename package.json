@@ -1,17 +1,16 @@
 {
   "name": "react-redux-realestate",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A simple react/redux application ",
   "main": "src/index.js",
   "scripts": {
     "clean": "rimraf dist coverage",
     "start-prod": "node ./server/server.js",
     "start": "webpack-dev-server --config ./webpack.dev.config.js --mode development",
-    "build-dev": "rimraf dist/ && npm run webpack-dev && npm run copy-files",
-    "build": "rimraf dist/ && npm run webpack-prod && npm run copy-files",
+    "build-dev": "rimraf dist/ && npm run webpack-dev",
+    "build": "rimraf dist/ && npm run webpack-prod",
     "webpack-prod": "webpack --config webpack.prod.config.js",
     "webpack-dev": "webpack --config webpack.dev.config.js",
-    "copy-files": "cpx public/**/*.{css,png,jpg,eot,svg,ttf,woff,html} dist/",
     "posttest": "eslint .",
     "test": "jest --coverage"
   },
@@ -36,7 +35,9 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "body-parser": "^1.18.3",
-    "css-loader": "^0.28.11",
+    "copy-webpack-plugin": "^5.0.0",
+    "css-loader": "^1.0.1",
+    "dotenv": "^6.2.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "eslint": "^4.19.1",
@@ -45,11 +46,14 @@
     "eslint-plugin-jest": "^21.15.1",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
+    "express": "^4.16.4",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "fetch-mock": "^6.4.2",
+    "html-webpack-include-assets-plugin": "^1.0.7",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^22.4.3",
     "mini-css-extract-plugin": "^0.4.0",
+    "node-fetch": "^2.3.0",
     "node-sass": "^4.8.3",
     "postcss-loader": "^2.1.3",
     "react-hot-loader": "^4.1.2",
@@ -61,24 +65,20 @@
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.0.1",
     "uuid": "^3.3.2",
-    "webpack": "^4.8.3",
+    "webpack": "^4.29.5",
     "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "^2.0.14",
-    "webpack-dev-server": "^3.1.3",
-    "webpack-md5-hash": "0.0.6"
+    "webpack-cli": "^3.2.2",
+    "webpack-dev-server": "^3.1.3"
   },
   "dependencies": {
     "connected-react-router": "^5.0.1",
-    "cpx": "^1.5.0",
-    "dotenv": "^6.2.0",
-    "express": "^4.16.3",
     "history": "^4.7.2",
     "immutable": "^3.8.2",
     "local-storage": "^1.4.2",
     "nuka-carousel": "^4.2.1",
     "promise-polyfill": "8.1.0",
-    "prop-types": "^15.6.1",
-    "query-string": "^6.1.0",
+    "prop-types": "^15.7.2",
+    "query-string": "^6.2.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-immutable-proptypes": "^2.1.0",
@@ -97,10 +97,12 @@
     "whatwg-fetch": "^3.0.0"
   },
   "jest": {
+    "testURL": "http://localhost/",
     "verbose": true,
-    "modulePathIgnorePatterns": [
+    "testPathIgnorePatterns": [
       ".history",
-      "node_modules"
+      "node_modules/",
+      "server/*"
     ]
   }
 }
