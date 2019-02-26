@@ -23,7 +23,7 @@ const tokenValidatorMiddleware = (req, res, next) => {
     token = req.headers.authorization.substr(7);
     found = db.users.filter(user => user.tokens.find(userToken => userToken === token));
   }
-  if (found && token) {
+  if (found && found.length && token) {
     req.accessToken = found[0].tokens.find(userToken => userToken === token);
     next();
   } else {

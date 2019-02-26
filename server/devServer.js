@@ -1,9 +1,12 @@
 const express = require('express'); // eslint-disable-line
 const bodyParser = require('body-parser'); // eslint-disable-line
+const compression = require('compression'); // eslint-disable-line
+const addRouters2App = require('./serverRoutes'); // eslint-disable-line
 const uuidv1 = require('uuid/v1'); // eslint-disable-line
-const db = require('./db.json');
 const featuredProperties = require('../test/mockData/featuredProperties.json');
-const { save2Json, generateToken, tokenValidatorMiddleware } = require('./serverUtils');
+
+const CWD = process.cwd();
+const getHome = (req, res) => res.sendFile(`${CWD}/dist/index.html`);
 
 const devServer = {
   port: 8008,
@@ -17,114 +20,30 @@ const devServer = {
   },
   setup: (app) => {
     app.use(bodyParser.json());
+    app.use(compression());
 
     app.use('/static', express.static('dist'));
-    app.get('/search', (req, res) => {
-      res.sendFile(`${process.cwd()}/dist/index.html`);
-    });
-    app.get('/about', (req, res) => {
-      res.sendFile(`${process.cwd()}/dist/index.html`);
-    });
-    app.get('/agents', (req, res) => {
-      res.sendFile(`${process.cwd()}/dist/index.html`);
-    });
-    app.get('/blog', (req, res) => {
-      res.sendFile(`${process.cwd()}/dist/index.html`);
-    });
-    app.get('/contact', (req, res) => {
-      res.sendFile(`${process.cwd()}/dist/index.html`);
-    });
-    app.get('/property/:name', (req, res) => {
-      res.sendFile(`${process.cwd()}/dist/index.html`);
-    });
-    app.get('/blog/:name', (req, res) => {
-      res.sendFile(`${process.cwd()}/dist/index.html`);
-    });
+    app.get('/not-found', getHome);
+    app.get('/search', getHome);
+    app.get('/about', getHome);
+    app.get('/agents', getHome);
+    app.get('/blog', getHome);
+    app.get('/contact', getHome);
+    app.get('/property/:name', getHome);
+    app.get('/blog/:name', getHome);
     app.get('/api/properties/featured', (req, res) => {
-      res.sendFile(`${process.cwd()}/test/mockData/featuredProperties.json`);
+      res.sendFile(`${CWD}/test/mockData/featuredProperties.json`);
     });
     app.get('/api/properties/recommended', (req, res) => {
-      res.sendFile(`${process.cwd()}/test/mockData/featuredProperties.json`);
+      res.sendFile(`${CWD}/test/mockData/featuredProperties.json`);
     });
     app.get('/api/properties/hot', (req, res) => {
-      res.sendFile(`${process.cwd()}/test/mockData/featuredProperties.json`);
+      res.sendFile(`${CWD}/test/mockData/featuredProperties.json`);
     });
     app.get('/api/properties/new', (req, res) => {
       res.status(404).json({ message: 'An error has happened loading new properties. Try again.' });
     });
-    // USER
-    app.post('/api/user/validate', (req, res) => {
-      const found = db.users.find(user => user.email === req.body.email);
-      if (req.body.id) {
-        if (found) {
-          res.json({ message: 'ok' });
-        } else {
-          res.status(404).json({ _error: 'User not found.' });
-        }
-      } else if (found) {
-        res.status(500).json({ email: 'Email is already used.' });
-      } else {
-        res.json({ message: 'ok' });
-      }
-    });
-    // USER
-    app.post('/api/user', (req, res) => {
-      const found = db.users.find(user => user.email === req.body.email);
-      if (req.body.id) {
-        if (found) {
-          db.users = db.users.map((user) => {
-            if (user.id === req.body.id) {
-              return Object.assign({}, found, req.body);
-            }
-            return user;
-          });
-          save2Json(db, () => {
-            res.json({ message: 'ok' });
-          });
-        } else {
-          res.status(404).json({ _error: 'User not found.' });
-        }
-      } else if (found) {
-        res.status(500).json({ email: 'Email is already used.' });
-      } else {
-        const newUser = Object.assign(
-          {},
-          req.body,
-          { id: uuidv1(), tokens: [], confirmPassword: undefined },
-        );
-        db.users.push(newUser);
-        save2Json(db, () => {
-          res.json({ message: 'ok' });
-        });
-      }
-    });
-    app.get('/api/user/email/:email', (req, res) => {
-      const found = db.users.find(user => user.email === req.params.email);
-      if (found) {
-        res.status(500).json({ email: 'Invalid is already used.' });
-      } else {
-        res.json({ message: 'ok.' });
-      }
-    });
-    app.get('/api/user/:id', tokenValidatorMiddleware, (req, res) => {
-      const user = db.users.find(item => item.id === req.params.id);
-      if (user) {
-        res.json(Object.assign({}, user, { password: undefined, tokens: undefined }));
-      } else {
-        res.status(404).json({ email: 'User not found.' });
-      }
-    });
-    app.post('/api/login', (req, res) => {
-      const user = db.users
-        .find(item => item.email === req.body.email && item.password === req.body.password);
-      if (user) {
-        const token = generateToken();
-        user.tokens.push(token);
-        res.json({ id: user.id, token });
-      } else {
-        res.status(500).json({ _error: 'Email and/or password are wrong.' });
-      }
-    });
+    addRouters2App(app);
     app.get('/api/search', (req, res) => {
       res.setHeader('Content-Type', 'application/json');
       res.send(JSON.stringify({
@@ -133,10 +52,10 @@ const devServer = {
       }));
     });
     app.get('/api/agents/list', (req, res) => {
-      res.sendFile(`${process.cwd()}/test/mockData/agents.json`);
+      res.sendFile(`${CWD}/test/mockData/agents.json`);
     });
     app.get('/api/prices/list', (req, res) => {
-      res.sendFile(`${process.cwd()}/test/mockData/priceType.json`);
+      res.sendFile(`${CWD}/test/mockData/priceType.json`);
     });
     app.get('*', (req, res, next) => {
       const check = ext => req.originalUrl.indexOf(ext) === -1;
@@ -150,7 +69,7 @@ const devServer = {
         && check('.eot')
         && check('.woff')
         && check('.ico')) {
-        res.sendFile(`${process.cwd()}/dist/index.html`);
+        res.sendFile(`${CWD}/dist/index.html`);
       } else {
         next();
       }
