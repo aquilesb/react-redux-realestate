@@ -3,6 +3,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
+import AuthRoute from '../containers/AuthorizedRouteContainer';
 import HomeContainer from '../containers/HomeContainer';
 import PropertyContainer from '../containers/PropertyContainer';
 import AgentsContainer from '../containers/AgentsContainer';
@@ -26,7 +27,7 @@ const Routes = () => (
     <Route exact path="/blog" component={Blog} />
     <Route path="/blog/:name" component={BlogDetail} />
     <Route path="/property/:name" component={PropertyContainer} />
-    <Route path="/my-account" component={UserDetailsContainer} />
+    <AuthRoute path="/my-account" component={UserDetailsContainer} needAuth />
     <Route path="/not-found" component={NotFound} />
     <Route component={NotFound} />
   </Switch>

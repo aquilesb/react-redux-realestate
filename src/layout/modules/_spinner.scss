@@ -37,7 +37,14 @@
 //         opacity: 0;
 //     }
 // }
+
 .main-spinner-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 200px;
+}
+.main-spinner-container {
     height: 100%;
     width: 100%;
     display: flex;

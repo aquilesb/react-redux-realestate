@@ -3,6 +3,7 @@ import * as ActionTypes from '../actions/actionTypes';
 
 const initialState = fromJS({
   id: null,
+  authPending: true,
   token: null,
   data: {},
 });
@@ -17,6 +18,9 @@ export default (state = initialState, { type, payload }) => {
 
     case ActionTypes.USER_LOGOUT:
       return state.set('id', null).set('token', null).set('data', Map({}));
+
+    case ActionTypes.USER_UPDATE_AUTH_PENDING:
+      return state.set('authPending', payload);
 
     default:
       return state;
