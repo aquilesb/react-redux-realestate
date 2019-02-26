@@ -13,7 +13,8 @@ export default store => next => (action) => {
       }
     } else if (action.payload.status === 401) {
       store.dispatch(logout());
-      store.dispatch(push('/not-found'));
+      const pathname = encodeURIComponent(store.getState().getIn(['router', 'location', 'pathname']));
+      store.dispatch(push(`/?redirect=${pathname}`));
     } else if (action.payload.status === 404) {
       // store.dispatch(push('/404'))
       error(action.payload.message);
