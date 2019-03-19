@@ -20,7 +20,7 @@ module.exports = {
   mode: 'development',
   entry: [
     'react-hot-loader/patch',
-    './src/index.jsx',
+    './src/indexDev.jsx',
   ],
   devtool: "source-map",
   module: {
