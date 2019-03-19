@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "clean": "rimraf dist coverage",
-    "start-prod": "node ./server/server.js",
-    "start": "webpack-dev-server --config ./webpack.dev.config.js --mode development",
+    "start": "node ./server/server.js",
+    "dev": "webpack-dev-server --config ./webpack.dev.config.js --mode development",
     "build-dev": "rimraf dist/ && npm run webpack-dev",
     "build": "rimraf dist/ && npm run webpack-prod",
     "webpack-prod": "webpack --config webpack.prod.config.js",
