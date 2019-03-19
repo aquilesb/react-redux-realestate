@@ -12,24 +12,36 @@ const AuthorizedRoute = ({
   pathname,
   needAuth,
   ...rest
-}) => (
-  <Route
-    {...rest}
-    render={(props) => {
-      if (pending) {
-        return <div className="main-spinner-wrapper"><MainSpinner /></div>;
-      }
+}) => {
+  return (
+    <Route
+      {...rest}
+      render={(props) => {
+        if (pending) {
+          return <div className="main-spinner-wrapper"><MainSpinner /></div>;
+        }
 
-      if (logged) {
+        if (typeof Component === 'object') {
+          return (
+            <React.Suspense fallback={ <div className="main-spinner-wrapper"><MainSpinner /></div> }>
+              {logged && <Component {...props} />}
+              {!logged && needAuth && <Redirect to={`/?redirect=${pathname}`} />}
+              {!logged && !needAuth && <Component {...props} /> }
+            </React.Suspense>
+          );
+        }
+
+        if (logged) {
+          return <Component {...props} />;
+        }
+        if (needAuth) {
+          return <Redirect to={`/?redirect=${pathname}`} />;
+        }
         return <Component {...props} />;
-      }
-      if (needAuth) {
-        return <Redirect to={`/?redirect=${pathname}`} />;
-      }
-      return <Component {...props} />;
-    }}
-  />
-);
+      }}
+    />
+  );
+};
 
 const stateToProps = state => ({
   pending: state.getIn(['user', 'authPending']),
@@ -43,7 +55,10 @@ const functions = {
 };
 
 AuthorizedRoute.propTypes = {
-  component: PropTypes.func.isRequired,
+  component: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.object,
+  ]).isRequired,
   pending: PropTypes.bool.isRequired,
   logged: PropTypes.bool.isRequired,
   pathname: PropTypes.string.isRequired,
