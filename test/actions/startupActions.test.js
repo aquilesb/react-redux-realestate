@@ -75,6 +75,7 @@ describe('Startup Actions', () => {
         payload: fromJS(priceTypes),
       },
       { type: types.LAYOUT_HIDE_SPINNER },
+      { type: types.USER_UPDATE_AUTH_PENDING, payload: false },
     ];
 
     const store = mockStore({});

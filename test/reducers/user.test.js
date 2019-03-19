@@ -10,6 +10,7 @@ describe('user reducer', () => {
       id: null,
       token: null,
       data: {},
+      authPending: true,
     });
   });
 
@@ -19,7 +20,7 @@ describe('user reducer', () => {
   });
 
   test('should returns user data', () => {
-    const data = { id: 'idTest', name: 'test' };
+    const data = { id: 'idTest', name: 'test', authPending: true };
     const dispatchedAction = {
       type: action.USER_FETCH_DATA_SUCCESS,
       payload: fromJS(data),
