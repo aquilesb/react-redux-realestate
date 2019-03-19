@@ -16,6 +16,7 @@ import {
   USER_REGISTER_FAILURE,
   USER_LOGIN_SUCCESS,
   USER_LOGOUT,
+  USER_UPDATE_AUTH_PENDING,
 } from './actionTypes';
 
 
@@ -33,12 +34,7 @@ export const getUserData = storedID => (dispatch, state) => {
         USER_FETCH_DATA,
         {
           type: USER_FETCH_DATA_SUCCESS,
-          payload: (_, reduxState, response) => response.json().then((json) => {
-            setTimeout(() => {
-              dispatch(push('/my-account'));
-            }, 500);
-            return fromJS(json);
-          }),
+          payload: (_, reduxState, response) => response.json().then(json => fromJS(json)),
         },
         ajaxFailure(USER_FETCH_DATA_FAILURE),
       ],
@@ -107,6 +103,7 @@ export const userRegisterValidate = (values, _, compProps) => (dispatch) => {
         throw new SubmissionError(json);
       }
       dispatch(registerUser(compProps));
+      return Promise.resolve();
     }));
 };
 
@@ -114,7 +111,7 @@ export const userRegisterValidate = (values, _, compProps) => (dispatch) => {
  * Sign in user, setting access token and user ID in the state
  * @param {Immutable.Map} values form fields values
  */
-export const login = values => dispatch => fetchPolyfill('/api/login', getFetchOptions(values))
+export const login = values => (dispatch, state) => fetchPolyfill('/api/login', getFetchOptions(values))
   .then(resp => resp.json().then((json) => {
     if (resp.status !== 200) {
       throw new SubmissionError(json);
@@ -123,7 +120,14 @@ export const login = values => dispatch => fetchPolyfill('/api/login', getFetchO
     ls(USER_ID_KEY, json.id);
     dispatch(updateLoginModalIsOpen(false));
     dispatch({ type: USER_LOGIN_SUCCESS, payload: json });
-    dispatch(getUserData());
+    dispatch(getUserData()).then(() => {
+      const search = state().getIn(['router', 'location', 'search']);
+      if (search) {
+        const newURL = decodeURIComponent(search).replace('?redirect=', '');
+        dispatch(push(newURL));
+      }
+    });
+    return Promise.resolve();
   }));
 
   /**
@@ -137,4 +141,14 @@ export const logout = () => (dispatch, state) => {
   ls.remove(ACCESS_TOKEN_KEY);
   ls.remove(USER_ID_KEY);
   dispatch({ type: USER_LOGOUT });
+  return Promise.resolve();
+};
+
+/**
+ * Update authPending flag, which manage if the portal is waiting for authorization
+ * @param {boolean} payload if portal is waiting for auth
+ */
+export const updateAuthPending = () => (dispatch) => {
+  dispatch({ type: USER_UPDATE_AUTH_PENDING, payload: false });
+  return Promise.resolve();
 };

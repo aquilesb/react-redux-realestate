@@ -21,7 +21,7 @@ const getEnv = () => {
 const envKeys = Object.keys(getEnv()).reduce((prev, next) => {
   prev[`${next}`] = JSON.stringify(getEnv()[next]);
   return prev;
-}, {'NODE_ENV': 'production'});
+}, {'NODE_ENV': "'production'"});
 
 
 module.exports = {
@@ -107,7 +107,8 @@ module.exports = {
   new HtmlWebpackPlugin({
     title: 'React Redux Real Estate',
     meta: { viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
-    base: "https://example.com/path/"
+    base: "https://example.com/path/",
+    template: 'public/template.html'
   }),
   new HtmlWebpackIncludeAssetsPlugin({
     assets: [{ path: 'js', glob: '*.js' }],

@@ -49,6 +49,4 @@ const mapStateToProps = state => ({
   agentsList: state.getIn(['agents', 'list']),
 });
 
-const functions = {};
-
-export default connect(mapStateToProps, functions)(AgentsContainer);
+export default connect(mapStateToProps)(AgentsContainer);

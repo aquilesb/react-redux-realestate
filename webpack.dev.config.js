@@ -14,13 +14,13 @@ const getEnv = () => {
 const envKeys = Object.keys(getEnv()).reduce((prev, next) => {
   prev[`${next}`] = JSON.stringify(getEnv()[next]);
   return prev;
-}, {'NODE_ENV': JSON.stringify('development')});
+}, {'NODE_ENV': "'development'"});
 
 module.exports = {
   mode: 'development',
   entry: [
     'react-hot-loader/patch',
-    './src/index.jsx',
+    './src/indexDev.jsx',
   ],
   devtool: "source-map",
   module: {

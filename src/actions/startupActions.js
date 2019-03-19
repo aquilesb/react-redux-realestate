@@ -1,12 +1,12 @@
 import ls from 'local-storage';
-import { getUserData } from './userActions';
+import { getUserData, updateAuthPending } from './userActions';
 import { getAgents } from './agentsActions';
 import { getFeaturedProps, getRecommendedProps, getHotProps, getNewProps } from './propertieActions';
 import { hideSpinner } from './layoutActions';
 import { updateIsProd } from './configActions';
 import { getPriceTypes } from './searchActions';
 
-const { ACCESS_TOKEN_KEY, USER_ID_KEY } = process.env;
+const { ACCESS_TOKEN_KEY, USER_ID_KEY, NODE_ENV } = process.env;
 const loadInitialData = () => (dispatch) => {
   const token = ls(ACCESS_TOKEN_KEY);
   const userID = ls(USER_ID_KEY);
@@ -18,7 +18,7 @@ const loadInitialData = () => (dispatch) => {
     dispatch(getHotProps()),
     dispatch(getNewProps()),
     dispatch(getPriceTypes()),
-    dispatch(updateIsProd(process.env.NODE_ENV === 'production')),
+    dispatch(updateIsProd(NODE_ENV === 'production')),
   ];
 
   if (token && userID) {
@@ -27,6 +27,7 @@ const loadInitialData = () => (dispatch) => {
 
   return Promise.all(promises).then(() => {
     dispatch(hideSpinner());
+    dispatch(updateAuthPending());
   });
 };
 
