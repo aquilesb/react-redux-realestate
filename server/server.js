@@ -51,7 +51,7 @@ app.get('/api/prices/list', (req, res) => {
 
 addRouters2App(app);
 
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(500).send('something went wrong...');
 });
 

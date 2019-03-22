@@ -10,7 +10,7 @@ describe('InsideBanner component', () => {
   let mountedComponent;
   const getComponent = (isNew = false) => {
     if (!mountedComponent || isNew) {
-      mountedComponent = mount(<MemoryRouter><InsideBanner /></MemoryRouter>);
+      mountedComponent = mount(<MemoryRouter><InsideBanner title="Inside Banner" /></MemoryRouter>);
     }
     return mountedComponent;
   };
