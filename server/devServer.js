@@ -1,12 +1,21 @@
 const express = require('express'); // eslint-disable-line
+const path = require('path'); // eslint-disable-line
 const bodyParser = require('body-parser'); // eslint-disable-line
 const compression = require('compression'); // eslint-disable-line
 const addRouters2App = require('./serverRoutes'); // eslint-disable-line
 const uuidv1 = require('uuid/v1'); // eslint-disable-line
-const featuredProperties = require('../test/mockData/featuredProperties.json');
 
-const CWD = process.cwd();
-const getHome = (req, res) => res.sendFile(`${CWD}/dist/index.html`);
+const mockPropertiesPath = path.resolve(__dirname, '..', 'src', 'modules', 'Properties', 'Tests', 'properties.mock.json');
+
+const mockPriceTypePath = path.resolve(__dirname, '..', 'src', 'modules', 'Search', 'Tests', 'priceType.mock.json');
+
+const mockAgentsPath = path.resolve(__dirname, '..', 'src', 'modules', 'Agents', 'Tests', 'agents.mock.json');
+
+
+const featuredProperties = require(mockPropertiesPath); // eslint-disable-line
+const index = path.resolve(__dirname, '..', 'dist', 'index.html');
+
+const getHome = (req, res) => res.sendFile(index);
 
 const devServer = {
   port: 8008,
@@ -32,13 +41,13 @@ const devServer = {
     app.get('/property/:name', getHome);
     app.get('/blog/:name', getHome);
     app.get('/api/properties/featured', (req, res) => {
-      res.sendFile(`${CWD}/test/mockData/featuredProperties.json`);
+      res.sendFile(mockPropertiesPath);
     });
     app.get('/api/properties/recommended', (req, res) => {
-      res.sendFile(`${CWD}/test/mockData/featuredProperties.json`);
+      res.sendFile(mockPropertiesPath);
     });
     app.get('/api/properties/hot', (req, res) => {
-      res.sendFile(`${CWD}/test/mockData/featuredProperties.json`);
+      res.sendFile(mockPropertiesPath);
     });
     app.get('/api/properties/new', (req, res) => {
       res.status(404).json({ message: 'An error has happened loading new properties. Try again.' });
@@ -52,10 +61,10 @@ const devServer = {
       }));
     });
     app.get('/api/agents/list', (req, res) => {
-      res.sendFile(`${CWD}/test/mockData/agents.json`);
+      res.sendFile(mockAgentsPath);
     });
     app.get('/api/prices/list', (req, res) => {
-      res.sendFile(`${CWD}/test/mockData/priceType.json`);
+      res.sendFile(mockPriceTypePath);
     });
     app.get('*', (req, res, next) => {
       const check = ext => req.originalUrl.indexOf(ext) === -1;
@@ -69,7 +78,7 @@ const devServer = {
         && check('.eot')
         && check('.woff')
         && check('.ico')) {
-        res.sendFile(`${CWD}/dist/index.html`);
+        res.sendFile(index);
       } else {
         next();
       }

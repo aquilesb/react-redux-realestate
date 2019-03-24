@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const devServer = require('./server/devServer');
@@ -47,6 +48,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
   output: {
     path: __dirname + '/dist',
