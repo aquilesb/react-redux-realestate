@@ -4,16 +4,14 @@ import { Provider } from 'react-redux';
 import { fromJS } from 'immutable';
 import { createBrowserHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router/immutable';
-import configureStore from './store/configureStore';
-import IndexContainer from './containers/IndexContainer';
-import loadInitialData from './actions/startupActions';
-import './layout/index.scss';
-
+import IndexContainer from '@/core/Containers/IndexContainer';
+import '@/core/Layout/index.scss';
+import configureStore from '@/core/Store/configureStore';
+import loadInitialData from '@/core/Store/startup.actions';
 
 const history = createBrowserHistory();
-const store = configureStore(fromJS({}), history);
 
-const App = () => (
+const App = store => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <IndexContainer />
@@ -28,6 +26,8 @@ const render = () => {
   );
 };
 
-render();
+configureStore(fromJS({}), history).then((store) => {
+  render();
+  store.dispatch(loadInitialData());
+});
 
-store.dispatch(loadInitialData());
