@@ -42,7 +42,6 @@ describe('Startup Actions', () => {
       { type: types.PROPERTIES_GET_HOT },
       { type: types.PROPERTIES_GET_NEW },
       { type: types.SEARCH_GET_PRICE_TYPE },
-      { type: types.CONFIG_UPDATE_IS_PROD, isProd: process.env.NODE_ENV === 'production' },
       { type: types.AGENTS_GET_LIST_SUCCESS, meta: undefined, payload: fromJS(agentsList) },
       {
         type: types.PROPERTIES_GET_FEATURED_PROP_SUCCESS,
