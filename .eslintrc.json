@@ -14,5 +14,12 @@
             "specialLink": ["hrefLeft", "hrefRight", "to"],
             "aspects": ["noHref", "invalidHref", "preferButton"]
         }]
+    },
+    "settings":{
+        "import/resolver": {
+            "webpack": {
+                "config": "webpack.dev.config.js"
+            }
+        }
     }
 }
