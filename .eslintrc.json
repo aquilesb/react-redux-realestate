@@ -21,5 +21,10 @@
                 "config": "webpack.dev.config.js"
             }
         }
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "allowImportExportEverywhere": true
     }
+      
 }
