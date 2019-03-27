@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { fromJS } from 'immutable';
@@ -15,16 +15,18 @@ setConfig({ pureSFC: true });
 const history = createBrowserHistory();
 
 const App = ({ store }) => (
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <IndexContainer />
-    </ConnectedRouter>
-  </Provider>
+  <StrictMode>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <IndexContainer />
+      </ConnectedRouter>
+    </Provider>
+  </StrictMode>
 );
 
 const render = (store) => {
   ReactDOM.render(
-    <App store={ store} />,
+    <App store={store} history={history} />,
     document.getElementById('app'),
   );
 };
